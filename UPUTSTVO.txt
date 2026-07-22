@@ -1,0 +1,9 @@
+BALKANAGENT V7 — POTPUNO PREVEDENA VERZIJA
+
+1. Raspakujte ZIP.
+2. U Cloudflare Workers & Pages otvorite svoj projekat.
+3. Uploadujte SVE fajlove iz ovog foldera zajedno. index.html mora biti u glavnom nivou.
+4. Povežite balkanagent.com i www.balkanagent.com kao custom domains.
+5. Stranica ima 11 potpuno povezanih jezika: EN, DE, RU, BS, AL, MK, SI, BG, GR, RO i TR.
+6. Kontakt ide na info@balkanagent.com, a demo forma otvara WhatsApp broj +49 176 22824031.
+7. Lično ime, privatni IBAN/BIC i tekst o neregistrovanoj firmi nisu prikazani.

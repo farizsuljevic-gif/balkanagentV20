@@ -1,0 +1,17 @@
+BALKANAGENT V21 PRO — GITHUB READY
+
+1. Raspakuj ZIP.
+2. Otvori raspakovani folder.
+3. Pritisni Command + A.
+4. Prevuci sve fajlove direktno na GitHub Upload files.
+5. Klikni Commit changes.
+6. U Cloudflare Pages poveži novi repository.
+7. Build command ostavi prazno.
+8. Build output directory: /
+
+VAŽNO:
+- Nema foldera images.
+- balkan-map-flags.png je u glavnom direktoriju.
+- Mobilni naslov i mapa su smanjeni.
+- Izbor jezika radi preko i18n.js.
+- Dodan je ?v=21 da Safari ne učitava stari CSS/JavaScript iz cache-a.
