@@ -15,3 +15,5 @@ VAŽNO:
 - Mobilni naslov i mapa su smanjeni.
 - Izbor jezika radi preko i18n.js.
 - Dodan je ?v=21 da Safari ne učitava stari CSS/JavaScript iz cache-a.
+
+VAŽNO: Slika je preimenovana u balkan-map-v21-clean.png kako Cloudflare/Safari ne bi prikazivali staru sliku sa ZIP trakom.
