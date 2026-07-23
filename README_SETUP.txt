@@ -28,3 +28,9 @@ IMPORTANT
 
 NO-FOLDER BUILD:
 All website HTML, CSS, JavaScript and the Balkan map image are in the ZIP root. Only Cloudflare-required backend folders (functions and scripts) remain. Upload the CONTENTS of the extracted folder to the root of your GitHub repository.
+
+ADMIN ACCESS
+Email: fariz.suljevic@gmail.com
+Initial password: BA-Fariz-2026!xQ7
+The first successful login creates the administrator automatically if it does not exist.
+After login, open /admin.html and change the password immediately.
