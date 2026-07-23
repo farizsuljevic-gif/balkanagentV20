@@ -17,13 +17,14 @@ Upload the extracted CONTENTS directly to the root of your GitHub repository.
 - In the Pages project, bind the database as: DB
 - Execute the complete schema.sql in the D1 console.
 
-3. ADMIN ACCOUNT
-- Register normally at /register.html using: fariz.suljevic@gmail.com
-- New accounts are created with status pending until an administrator activates them.
-- Then run this once in D1:
-  UPDATE users SET is_admin=1,status='active' WHERE lower(email)='fariz.suljevic@gmail.com';
-- Log out and log in again, then open /admin.html.
-- No default administrator password is stored in this ZIP.
+3. ADMIN ACCOUNT — FIXED ONE-TIME SETUP
+- Add encrypted Cloudflare secret: ADMIN_SETUP_KEY (use a long private value).
+- ADMIN_EMAIL defaults to fariz.suljevic@gmail.com.
+- Redeploy, then open /admin-setup.html.
+- Enter the admin email, a new secure password and the exact setup key.
+- The page creates the administrator or repairs/upgrades the existing account, activates it, resets its password and logs it in.
+- After successful setup, rotate or remove ADMIN_SETUP_KEY.
+- Full instructions are in ADMIN_LOGIN_FIX.txt.
 
 4. STRIPE BILLING
 Create four recurring monthly Stripe Prices, then add these encrypted environment variables

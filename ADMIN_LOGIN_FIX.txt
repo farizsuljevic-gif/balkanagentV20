@@ -1,0 +1,19 @@
+ADMIN LOGIN — ONE-TIME FIX
+
+1. Cloudflare Pages > your project > Settings > Variables and Secrets.
+2. Add encrypted secret:
+   ADMIN_SETUP_KEY = choose a long private code, for example a random 24+ character value.
+3. Optional variable (already defaults correctly):
+   ADMIN_EMAIL = fariz.suljevic@gmail.com
+4. Make sure D1 is bound as DB and schema.sql has been executed.
+5. Redeploy the project.
+6. Open:
+   https://YOUR-DOMAIN/admin-setup.html
+7. Enter:
+   - email: fariz.suljevic@gmail.com
+   - a new password (10+ chars, uppercase, lowercase, number)
+   - the exact ADMIN_SETUP_KEY
+8. You will be logged in and redirected to /admin.html.
+9. After it works, rotate or delete ADMIN_SETUP_KEY in Cloudflare.
+
+This repair also upgrades an existing account with that email to active administrator and resets its password.
