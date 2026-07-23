@@ -1,36 +1,66 @@
-BALKANAGENT PRODUCTION BETA — INSTALLATION
+BALKANAGENT V3 ENTERPRISE — GITHUB / CLOUDFLARE PAGES SETUP
 
-1. Upload ALL files and folders from this ZIP to the root of your GitHub repository.
-2. In Cloudflare Pages, set Build output directory to: public
-3. Create a Cloudflare D1 database and bind it to the Pages project with variable name: DB
-4. Open D1 Console and execute the entire schema.sql file.
-5. Deploy the Pages project again.
-6. Register your own account at /register.html.
-7. Make yourself admin by running this in D1 Console:
-   UPDATE users SET is_admin=1,status='active' WHERE email='fariz.suljevic@gmail.com';
-8. Open /admin.html to activate testers and change their status.
+This ZIP has NO extra main folder. After extraction, index.html, package.json,
+functions/, scripts/ and the other project files are immediately visible.
+Upload the extracted CONTENTS directly to the root of your GitHub repository.
 
-EMAIL
-- Contact form sends to fariz.suljevic@gmail.com through FormSubmit.
-- The first submitted message may trigger a FormSubmit confirmation email. Confirm it once.
-- Site support links also use fariz.suljevic@gmail.com.
+1. CLOUDFLARE PAGES
+- Connect the GitHub repository to Cloudflare Pages.
+- Framework preset: None.
+- Build command: leave empty.
+- Build output directory: .
+- Deploy.
 
-BOT
-- A programmed demonstration bot is included on the homepage and works without an API key.
-- Dashboard AI employee creation, conversations and bookings use D1.
-- A true generative AI bot for each client requires an AI provider API key and per-client knowledge setup; no secret key is included in this ZIP.
+2. D1 DATABASE
+- Create a Cloudflare D1 database.
+- Replace REPLACE_WITH_YOUR_D1_DATABASE_ID in wrangler.toml.
+- In the Pages project, bind the database as: DB
+- Execute the complete schema.sql in the D1 console.
 
-IMPORTANT
-- Users can register and log in immediately.
-- New users start as pending. Activate them from /admin.html.
-- Made in Montenegro is included in the footer.
+3. ADMIN ACCOUNT
+- Register normally at /register.html using: fariz.suljevic@gmail.com
+- New accounts are created with status pending until an administrator activates them.
+- Then run this once in D1:
+  UPDATE users SET is_admin=1,status='active' WHERE lower(email)='fariz.suljevic@gmail.com';
+- Log out and log in again, then open /admin.html.
+- No default administrator password is stored in this ZIP.
 
+4. STRIPE BILLING
+Create four recurring monthly Stripe Prices, then add these encrypted environment variables
+in Cloudflare Pages > Settings > Variables and Secrets:
+- STRIPE_SECRET_KEY
+- STRIPE_WEBHOOK_SECRET
+- STRIPE_PRICE_STARTER      (€49/month)
+- STRIPE_PRICE_GROWTH       (€99/month)
+- STRIPE_PRICE_BUSINESS     (€159/month)
+- STRIPE_PRICE_ENTERPRISE   (€259/month)
 
-NO-FOLDER BUILD:
-All website HTML, CSS, JavaScript and the Balkan map image are in the ZIP root. Only Cloudflare-required backend folders (functions and scripts) remain. Upload the CONTENTS of the extracted folder to the root of your GitHub repository.
+Stripe webhook endpoint:
+  https://YOUR-DOMAIN/api/stripe/webhook
+Recommended events:
+- checkout.session.completed
+- invoice.paid
+- invoice.payment_succeeded
+- invoice.payment_failed
+- customer.subscription.updated
+- customer.subscription.deleted
 
-ADMIN ACCESS
-Email: fariz.suljevic@gmail.com
-Initial password: BA-Fariz-2026!xQ7
-The first successful login creates the administrator automatically if it does not exist.
-After login, open /admin.html and change the password immediately.
+After Stripe confirms a paid invoice, it is stored in D1 and the customer can download
+automatically generated PDF invoices from Billing.
+
+5. COMPANY DETAILS USED ON PDF INVOICES
+DOO Balkan Agent
+Djerane II b.b.
+Ulcinj, Crna Gora
+Fariz.suljevic@gmail.com
+
+6. LOCAL VALIDATION
+- npm install
+- npm run check
+- npm run dev
+
+7. IMPORTANT
+- Never commit Stripe secrets to GitHub.
+- Change the D1 database ID before deployment.
+- The included demo bot is rule-based. A real generative AI assistant requires a separate AI API integration.
+- Review legal pages and tax/VAT invoice requirements with a qualified accountant or lawyer before commercial launch.

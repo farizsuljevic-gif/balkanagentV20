@@ -1,0 +1,12 @@
+BALKANAGENT V3 ENTERPRISE — UPLOAD TO GITHUB
+
+The ZIP itself contains files at the root; it does not contain an extra project folder.
+macOS Finder always creates a folder when it extracts a ZIP. That extracted folder is not inside the ZIP.
+
+To upload:
+1. Open the extracted folder.
+2. Press Command + A.
+3. Drag all selected files and folders to GitHub Upload files.
+4. Confirm that index.html and package.json appear in the repository root.
+
+Do not upload only the ZIP file and do not upload the outer extracted folder as a single item.

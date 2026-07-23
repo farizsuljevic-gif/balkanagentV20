@@ -190,7 +190,7 @@
   const messages = document.getElementById('messages');
   if (chatForm && chatInput && messages) {
     const answers = [
-      [/price|cost|cijen|preis|çmim|цена|стоимость|fiyat|prezzo/i,'Plans start at €49/month. The Business plan is €129/month and Professional is €249/month.'],
+      [/price|cost|cijen|preis|çmim|цена|стоимость|fiyat|prezzo/i,'Plans start at €49/month. The Business plan is €99/month and Professional is €159/month and Enterprise is €259/month.'],
       [/language|jezik|sprache|gjuh|язык|dil|lingua/i,'BalkanAgent supports 12 Balkan and European languages and remembers the selected language.'],
       [/hotel|clinic|restaurant|real estate|apart|klin|restoran|nekretn|отел|клиник|ресторан/i,'BalkanAgent is designed for hotels, apartments, clinics, restaurants, real estate and service businesses.'],
       [/book|reserv|termin|брон|rezerv/i,'The bot can collect booking requests, customer details, dates and notes and show them in your dashboard.'],
