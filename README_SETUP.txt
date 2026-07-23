@@ -1,7 +1,7 @@
 BALKANAGENT PRODUCTION BETA — INSTALLATION
 
 1. Upload ALL files and folders from this ZIP to the root of your GitHub repository.
-2. In Cloudflare Pages, set Build output directory to: public
+2. In Cloudflare Pages, leave the build command empty and set Build output directory to: .
 3. Create a Cloudflare D1 database and bind it to the Pages project with variable name: DB
 4. Open D1 Console and execute the entire schema.sql file.
 5. Deploy the Pages project again.
@@ -32,5 +32,5 @@ All website HTML, CSS, JavaScript and the Balkan map image are in the ZIP root. 
 ADMIN ACCESS
 Email: fariz.suljevic@gmail.com
 Initial password: BA-Fariz-2026!xQ7
-The first successful login creates the administrator automatically if it does not exist.
+The owner login creates the administrator if missing and also repairs/promotes an existing owner account.
 After login, open /admin.html and change the password immediately.
