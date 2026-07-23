@@ -1,0 +1,3 @@
+import {json,requireAuth,readJson,clean} from '../../_lib.js';
+export async function onRequestGet(context){const a=await requireAuth(context);if(a.response)return a.response;return json({user:a.user});}
+export async function onRequestPut(context){const a=await requireAuth(context);if(a.response)return a.response;const b=await readJson(context.request);await context.env.DB.prepare("UPDATE users SET full_name=?,company_name=?,phone=?,country=?,preferred_language=?,updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(clean(b?.fullName,100),clean(b?.companyName,120),clean(b?.phone,40),clean(b?.country,80),clean(b?.preferredLanguage,8)||'en',a.user.id).run();return json({ok:true});}

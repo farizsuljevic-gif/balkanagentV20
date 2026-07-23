@@ -1,0 +1,12 @@
+{
+  "name": "balkanagent-v22-saas",
+  "version": "22.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler pages dev . --d1=DB",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
