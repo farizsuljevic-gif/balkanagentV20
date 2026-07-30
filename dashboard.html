@@ -1,23 +1,30 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Dashboard — BalkanAgent</title><style>
+<!doctype html><html lang="me"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pregled — BalkanAgent</title><link rel="stylesheet" href="app-pages.css"><script src="app.js"></script></head><body><div class="app"><aside class="sidebar" id="sidebar"><div class="brand">BA&nbsp; BALKAN<span>AGENT</span></div><div class="tagline">AI AUTOMATION PLATFORM</div><nav><a href="dashboard.html" class="active">Pregled</a><a href="conversations.html" class="">Razgovori</a><a href="bookings.html" class="">Rezervacije</a><a href="agents.html" class="">AI zaposleni</a><a href="billing.html" class="">Naplata</a><a href="profile.html" class="">Profil</a><a href="admin.html" class="admin-link" id="adminNav" style="display:none">Admin panel</a><a href="index.html">Javni sajt</a><a href="#" id="logoutLink">Odjava</a></nav></aside><main class="main"><header class="topbar"><div><button class="mobile-menu secondary" id="mobileMenu">☰</button><h1>Pregled</h1><p class="muted" id="welcome"></p></div><div class="top-actions"><a class="btn secondary" href="index.html">Javni sajt</a><button id="logoutBtn">Odjava</button></div></header>
+<section class="grid4">
+<div class="metric"><span>Razgovori</span><b id="mConversations">0</b><small class="positive">+12.5%</small></div>
+<div class="metric"><span>Rezervacije</span><b id="mBookings">0</b><small class="positive">+18.2%</small></div>
+<div class="metric"><span>AI zaposleni</span><b id="mAgents">0</b><small class="positive">Aktivni</small></div>
+<div class="metric"><span>Plan</span><b id="mPlan">—</b><small class="positive">Aktivan</small></div>
+</section>
+<section class="grid2"><article class="panel"><h2>Nedavni razgovori</h2><div class="table-wrap"><table><thead><tr><th>Kanal</th><th>Klijent</th><th>Poruka</th><th>Vrijeme</th></tr></thead><tbody id="recentRows"></tbody></table></div></article><article class="panel"><h2>Brze radnje</h2><p><a class="btn full" href="agents.html">Dodaj AI zaposlenog</a></p><p><a class="btn secondary full" href="bookings.html">Nova rezervacija</a></p><p><a class="btn secondary full" href="profile.html">Uredi profil</a></p></article></section>
+</main></div><script>
+const pageUser=BA.requireUser(false);
+if(pageUser){
+ document.getElementById("welcome").textContent=pageUser.name+" · "+pageUser.company;
+ const adminNav=document.getElementById("adminNav");if(adminNav&&pageUser.role==="admin")adminNav.style.display="block";
+}
+document.getElementById("logoutBtn").onclick=BA.logout;
+document.getElementById("logoutLink").onclick=function(e){e.preventDefault();BA.logout();};
+document.getElementById("mobileMenu").onclick=function(){document.getElementById("sidebar").classList.toggle("open");};
 
-body{margin:0;background:radial-gradient(circle at 50% 10%,#0a1740,#020611 45%,#01040a);color:#fff;font-family:Arial,sans-serif;min-height:100vh}
-.wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.box{width:min(460px,100%);background:#07111f;border:1px solid #1e2d46;border-radius:16px;padding:28px;box-shadow:0 20px 80px rgba(0,0,0,.45)}
-.logo{width:280px;margin-bottom:16px}.logo svg{width:100%}.box h1{margin:8px 0}.box p{color:#a8b2c4}.box input{width:100%;padding:13px;margin:7px 0;background:#030812;border:1px solid #283751;border-radius:8px;color:#fff;box-sizing:border-box}
-.box button,.box a.btn{display:block;width:100%;box-sizing:border-box;padding:14px;border:0;border-radius:8px;background:linear-gradient(135deg,#7627db,#225eff);color:#fff;font-weight:700;text-align:center;text-decoration:none;margin-top:10px}.back{display:inline-block;color:#9fb0cb;text-decoration:none;margin-bottom:8px}
-.notice{display:none;padding:10px;border-radius:8px;margin-top:12px;background:#12372d}
+if(pageUser){
+ const conversations=BA.ownerItems("conversations");
+ const bookings=BA.ownerItems("bookings");
+ const agents=BA.ownerItems("agents");
+ mConversations.textContent=conversations.length;
+ mBookings.textContent=bookings.length;
+ mAgents.textContent=agents.length;
+ mPlan.textContent=pageUser.plan;
+ recentRows.innerHTML=conversations.slice().reverse().slice(0,5).map(x=>`<tr><td>${BA.escapeHtml(x.channel)}</td><td>${BA.escapeHtml(x.customer)}</td><td>${BA.escapeHtml(x.message)}</td><td>${BA.escapeHtml(x.created)}</td></tr>`).join("")||'<tr><td colspan="4" class="empty">Nema razgovora.</td></tr>';
+}
 
-body{background:#020611}.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}aside{background:#050b16;border-right:1px solid #1b2940;padding:20px}aside .logo{width:190px}aside a{display:block;color:#b8c2d2;text-decoration:none;padding:11px;border-radius:7px;margin:4px 0}aside a.active,aside a:hover{background:#101b2e;color:#fff}main{padding:24px}.top{display:flex;justify-content:space-between;align-items:center}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.metric,.panel{background:#07111f;border:1px solid #1c2b44;border-radius:12px;padding:18px}.metric b{font-size:28px}.metric span{display:block;color:#9eabc0;font-size:12px}.grid{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}table{width:100%;border-collapse:collapse}td,th{padding:10px;border-bottom:1px solid #17243a;text-align:left;font-size:13px}button{padding:10px 14px;background:#7627db;border:0;color:#fff;border-radius:7px}@media(max-width:800px){.app{grid-template-columns:1fr}aside{display:none}.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
-</style></head><body><div class="app"><aside><div class="logo"><svg viewBox="0 0 360 92" xmlns="http://www.w3.org/2000/svg" aria-label="BalkanAgent">
-<defs>
-<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2b8"/><stop offset=".28" stop-color="#d5a842"/><stop offset=".58" stop-color="#6f4714"/><stop offset=".84" stop-color="#e8c465"/><stop offset="1" stop-color="#8b5e1b"/></linearGradient>
-<linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#76d7ff"/><stop offset=".35" stop-color="#287dff"/><stop offset="1" stop-color="#6531ff"/></linearGradient>
-</defs>
-<g transform="translate(2,4)">
-<path d="M0 0h54c25 0 39 10 39 28 0 11-6 19-17 24 15 4 24 13 24 27 0 21-18 33-46 33H0V0zm25 19v22h27c9 0 14-4 14-11 0-7-5-11-14-11H25zm0 41v27h31c11 0 17-5 17-14s-6-13-17-13H25z" fill="url(#gold)"/>
-<path d="M80 88 112 0h28l32 88h-28l-6-19h-32l-6 19H80zm33-39h19l-9-31-10 31z" fill="url(#blue)"/>
-</g>
-<text x="178" y="39" fill="#fff" font-size="24" font-family="Arial,Helvetica,sans-serif" font-weight="800">BALKAN<tspan fill="#4d7dff">AGENT</tspan></text>
-<text x="179" y="62" fill="#e8b84e" font-size="10" font-family="Arial,Helvetica,sans-serif" letter-spacing="1.5">AI AUTOMATION PLATFORM</text>
-</svg></div><a class="active">Pregled</a><a>Razgovori</a><a>Rezervacije</a><a>Leadovi</a><a>AI zaposleni</a><a>Integracije</a><a>Podešavanja</a></aside><main><div class="top"><div><h1>Pregled</h1><p id="welcome"></p></div><button id="logout">Odjava</button></div><section class="cards"><div class="metric"><span>Razgovori</span><b>1,250</b><small style="color:#22d98b">+12.5%</small></div><div class="metric"><span>Rezervacije</span><b>320</b><small style="color:#22d98b">+18.2%</small></div><div class="metric"><span>Leadovi</span><b>842</b><small style="color:#ffc13d">+22.1%</small></div><div class="metric"><span>Prihod</span><b>€12,540</b><small style="color:#22d98b">+15.7%</small></div></section><section class="grid"><div class="panel"><h2>Nedavni razgovori</h2><table><tr><th>Kanal</th><th>Poruka</th><th>Vrijeme</th></tr><tr><td>WhatsApp</td><td>Novi upit za Business paket</td><td>10:24</td></tr><tr><td>Instagram</td><td>Pitanje o rezervacijama</td><td>10:21</td></tr><tr><td>Website</td><td>Zahtjev za podršku</td><td>10:18</td></tr></table></div><div class="panel"><h2>Top kanali</h2><p>WhatsApp — 45%</p><p>Instagram — 25%</p><p>Messenger — 20%</p><p>Website — 10%</p></div></section></main></div><script>
-const session=localStorage.getItem('ba-session');if(!session)location.href='login.html';const users=JSON.parse(localStorage.getItem('ba-users')||'[]');const u=users.find(x=>x.email===session);document.getElementById('welcome').textContent=u?'Dobrodošli, '+u.name+' — '+u.company:session;document.getElementById('logout').onclick=()=>{localStorage.removeItem('ba-session');location.href='login.html'};
 </script></body></html>

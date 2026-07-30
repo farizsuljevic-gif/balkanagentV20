@@ -1,19 +1,24 @@
-BalkanAgent FINAL WORKING
+BALKANAGENT — COMPLETE FIXED VERSION
 
 Upload every file from this ZIP directly to the root of the GitHub repository.
 
-This version fixes the previous deployment problems:
-- all homepage CSS, JavaScript, logo and major visuals are embedded directly in index.html
-- no broken absolute paths
-- no missing image folders
-- responsive desktop/mobile layout
-- working language switcher
-- working demo request modal
-- working newsletter form
-- working demo chat
-- working registration, login, session and dashboard using browser localStorage
-- legal and 404 pages included
+ADMIN LOGIN
+Email: admin@balkanagent.com
+Password: BalkanAgent2026!
 
-Important:
-localStorage login is a functional static demo, not a secure production backend.
-Real customer accounts, payments, email delivery and database storage require a secure backend.
+WORKING PAGES
+- Public landing page
+- Registration
+- User login
+- Dashboard
+- Conversations
+- Bookings
+- AI Employees
+- Billing demo
+- Profile and password change
+- Admin login and admin panel
+- Privacy, terms and 404 pages
+
+The static demo stores data in the browser's localStorage. It works on GitHub Pages
+and Cloudflare Pages without a server. For real customers, secure authentication,
+database, email and payment processing must later be connected to a backend.
