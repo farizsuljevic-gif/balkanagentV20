@@ -190,12 +190,12 @@
   const messages = document.getElementById('messages');
   if (chatForm && chatInput && messages) {
     const answers = [
-      [/price|cost|cijen|preis|çmim|цена|стоимость|fiyat|prezzo/i,'Plans start at €49/month. The Business plan is €99/month and Professional is €159/month and Enterprise is €259/month.'],
+      [/price|cost|cijen|preis|çmim|цена|стоимость|fiyat|prezzo/i,'Plans start at €49/month. The Business plan is €99/month and Professional is €199/month.'],
       [/language|jezik|sprache|gjuh|язык|dil|lingua/i,'BalkanAgent supports 12 Balkan and European languages and remembers the selected language.'],
       [/hotel|clinic|restaurant|real estate|apart|klin|restoran|nekretn|отел|клиник|ресторан/i,'BalkanAgent is designed for hotels, apartments, clinics, restaurants, real estate and service businesses.'],
       [/book|reserv|termin|брон|rezerv/i,'The bot can collect booking requests, customer details, dates and notes and show them in your dashboard.'],
       [/activate|aktiv|account|nalog|login|активац|аккаунт/i,'Create an account, then the BalkanAgent admin can activate your beta access from the admin panel.'],
-      [/contact|email|mejl|контакт|почт/i,'Contact us at fariz.suljevic@gmail.com.'],
+      [/contact|email|mejl|контакт|почт/i,'Contact us at info@balkanagent.com.'],
       [/hello|hi|zdravo|hallo|привет|здравств/i,'Hello! Tell me what type of business you have and I will explain how BalkanAgent can help.']
     ];
     chatForm.addEventListener('submit', (event) => {
@@ -205,7 +205,7 @@
       const safeQuestion = question.replace(/[<>]/g, '');
       messages.insertAdjacentHTML('beforeend', `<div class="bubble user">${safeQuestion}</div>`);
       chatInput.value = '';
-      const answer = (answers.find(([pattern]) => pattern.test(question)) || [])[1] || 'BalkanAgent can answer customers 24/7, collect leads and bookings, and work in multiple languages. For a tailored demo, email fariz.suljevic@gmail.com.';
+      const answer = (answers.find(([pattern]) => pattern.test(question)) || [])[1] || 'BalkanAgent can answer customers 24/7, collect leads and bookings, and work in multiple languages. For a tailored demo, email info@balkanagent.com.';
       setTimeout(() => {
         messages.insertAdjacentHTML('beforeend', `<div class="bubble bot">${answer}</div>`);
         messages.scrollTop = messages.scrollHeight;
