@@ -1,24 +1,13 @@
-BALKANAGENT — COMPLETE FIXED VERSION
+BALKANAGENT LUXURY FINAL
 
-Upload every file from this ZIP directly to the root of the GitHub repository.
+Upload all files directly into the root of your GitHub repository.
 
-ADMIN LOGIN
-Email: admin@balkanagent.com
-Password: BalkanAgent2026!
+Admin login:
+admin@balkanagent.com
+BalkanAgent2026!
 
-WORKING PAGES
-- Public landing page
-- Registration
-- User login
-- Dashboard
-- Conversations
-- Bookings
-- AI Employees
-- Billing demo
-- Profile and password change
-- Admin login and admin panel
-- Privacy, terms and 404 pages
+This version intentionally removes unfinished pages and buttons.
+Only functions that work are included.
 
-The static demo stores data in the browser's localStorage. It works on GitHub Pages
-and Cloudflare Pages without a server. For real customers, secure authentication,
-database, email and payment processing must later be connected to a backend.
+The static login and admin data are stored in browser localStorage.
+For real customer accounts and payments, a secure backend is still required.
