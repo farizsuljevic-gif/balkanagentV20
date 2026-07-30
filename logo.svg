@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="BalkanAgent">
+<defs>
+ <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe09a"/><stop offset=".45" stop-color="#dca633"/><stop offset="1" stop-color="#7a5010"/></linearGradient>
+ <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#366cff"/><stop offset=".55" stop-color="#7c45ff"/><stop offset="1" stop-color="#c653ff"/></linearGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="6" y="6" width="168" height="168" rx="42" fill="#070b16" stroke="#1f2c50" stroke-width="3"/>
+<path d="M49 42h46c26 0 39 11 39 29 0 12-6 21-18 25 15 4 23 15 23 30 0 23-17 36-47 36H49V42zm29 24v20h15c9 0 14-3 14-10 0-7-5-10-14-10H78zm0 43v27h18c10 0 16-4 16-13 0-9-6-14-17-14H78z" fill="url(#g1)"/>
+<path d="M91 139l36-97h17l28 97h-28l-5-21h-30l-7 21H91zm26-45h17l-7-29-10 29z" fill="url(#g2)" filter="url(#glow)" opacity=".96"/>
+<path d="M29 112c7 24 26 42 50 50M35 60c18-28 51-42 83-34M126 27c17 7 31 20 40 36" fill="none" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+<circle cx="165" cy="66" r="6" fill="#f1bf4b" filter="url(#glow)"/>
+</svg>

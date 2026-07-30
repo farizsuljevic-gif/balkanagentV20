@@ -1,0 +1,15 @@
+BALKANAGENT — POSTAVLJANJE PREKO GITHUB DESKTOP
+
+1. Raspakuj ovaj ZIP na MacBook.
+2. Instaliraj i otvori GitHub Desktop.
+3. Klikni File > Add Local Repository.
+4. Izaberi raspakovani folder "BalkanAgent-GITHUB-DESKTOP".
+5. Klikni "Publish repository".
+6. Unesi ime repozitorijuma, na primjer: balkanagent.
+7. Isključi opciju "Keep this code private" samo ako želiš javni repozitorijum.
+8. Klikni "Publish Repository".
+
+VAŽNO:
+- Ne briši folder "functions" — potreban je za login, registraciju i admin API.
+- Folder "scripts" služi samo za provjeru projekta i može ostati.
+- Na GitHub Desktopu se automatski šalju svi folderi i fajlovi.

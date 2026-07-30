@@ -1,31 +1,26 @@
-async function api(url,options={}){const r=await fetch(url,{headers:{'content-type':'application/json',...(options.headers||{})},...options});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Request failed');return d}
-const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)];function msg(text){const n=qs('#notice');if(!n)return;n.textContent=text;n.style.display='block'}async function requireUser(){try{return(await api('/api/auth/me')).user}catch{location.href='/login.html'}}
-const LANGS={en:'English',me:'Crnogorski',de:'Deutsch',sq:'Shqip',hr:'Hrvatski',sr:'Srpski',bs:'Bosanski',mk:'Македонски',sl:'Slovenščina',it:'Italiano',tr:'Türkçe',ru:'Русский'};
-const P={
-'Overview':{me:'Pregled',de:'Übersicht',sq:'Përmbledhje',hr:'Pregled',sr:'Pregled',bs:'Pregled',mk:'Преглед',sl:'Pregled',it:'Panoramica',tr:'Genel bakış',ru:'Обзор'},
-'AI Employees':{me:'AI zaposleni',de:'KI-Mitarbeiter',sq:'Punonjësit AI',hr:'AI zaposlenici',sr:'AI zaposleni',bs:'AI zaposlenici',mk:'AI вработени',sl:'AI zaposleni',it:'Dipendenti AI',tr:'Yapay zekâ çalışanları',ru:'ИИ-сотрудники'},
-'Conversations':{me:'Razgovori',de:'Unterhaltungen',sq:'Bisedat',hr:'Razgovori',sr:'Razgovori',bs:'Razgovori',mk:'Разговори',sl:'Pogovori',it:'Conversazioni',tr:'Görüşmeler',ru:'Диалоги'},
-'Bookings':{me:'Rezervacije',de:'Buchungen',sq:'Rezervimet',hr:'Rezervacije',sr:'Rezervacije',bs:'Rezervacije',mk:'Резервации',sl:'Rezervacije',it:'Prenotazioni',tr:'Rezervasyonlar',ru:'Бронирования'},
-'Company profile':{me:'Profil firme',de:'Unternehmensprofil',sq:'Profili i kompanisë',hr:'Profil tvrtke',sr:'Profil firme',bs:'Profil firme',mk:'Профил на компанијата',sl:'Profil podjetja',it:'Profilo aziendale',tr:'Şirket profili',ru:'Профиль компании'},
-'Billing':{me:'Naplata',de:'Abrechnung',sq:'Faturimi',hr:'Naplata',sr:'Naplata',bs:'Naplata',mk:'Наплата',sl:'Obračun',it:'Fatturazione',tr:'Faturalandırma',ru:'Оплата'},
-'Admin':{me:'Admin',de:'Admin',sq:'Admin',hr:'Admin',sr:'Admin',bs:'Admin',mk:'Админ',sl:'Admin',it:'Admin',tr:'Yönetici',ru:'Админ'},
-'Log out':{me:'Odjava',de:'Abmelden',sq:'Dil',hr:'Odjava',sr:'Odjava',bs:'Odjava',mk:'Одјава',sl:'Odjava',it:'Esci',tr:'Çıkış',ru:'Выйти'},
-'Log in':{me:'Prijava',de:'Anmelden',sq:'Hyr',hr:'Prijava',sr:'Prijava',bs:'Prijava',mk:'Најава',sl:'Prijava',it:'Accedi',tr:'Giriş yap',ru:'Войти'},
-'Create account':{me:'Napravi nalog',de:'Konto erstellen',sq:'Krijo llogari',hr:'Izradi račun',sr:'Napravi nalog',bs:'Kreiraj račun',mk:'Креирај сметка',sl:'Ustvari račun',it:'Crea account',tr:'Hesap oluştur',ru:'Создать аккаунт'},
-'Start your workspace':{me:'Pokrenite svoj radni prostor',de:'Arbeitsbereich starten',sq:'Fillo hapësirën e punës',hr:'Pokrenite radni prostor',sr:'Pokrenite radni prostor',bs:'Pokrenite radni prostor',mk:'Започнете го работниот простор',sl:'Zaženite delovni prostor',it:'Avvia il tuo spazio di lavoro',tr:'Çalışma alanınızı başlatın',ru:'Запустите рабочее пространство'},
-'WELCOME BACK':{me:'DOBRO DOŠLI NAZAD',de:'WILLKOMMEN ZURÜCK',sq:'MIRË SE U KTHEVE',hr:'DOBRO DOŠLI NATRAG',sr:'DOBRO DOŠLI NAZAD',bs:'DOBRO DOŠLI NAZAD',mk:'ДОБРЕДОЈДОВТЕ НАЗАД',sl:'DOBRODOŠLI NAZAJ',it:'BENTORNATO',tr:'TEKRAR HOŞ GELDİNİZ',ru:'С ВОЗВРАЩЕНИЕМ'},
-'CREATE ACCOUNT':{me:'NAPRAVITE NALOG',de:'KONTO ERSTELLEN',sq:'KRIJO LLOGARI',hr:'IZRADI RAČUN',sr:'NAPRAVITE NALOG',bs:'KREIRAJ RAČUN',mk:'КРЕИРАЈ СМЕТКА',sl:'USTVARI RAČUN',it:'CREA ACCOUNT',tr:'HESAP OLUŞTUR',ru:'СОЗДАТЬ АККАУНТ'},
-'Create AI employee':{me:'Napravi AI zaposlenog',de:'KI-Mitarbeiter erstellen',sq:'Krijo punonjës AI',hr:'Izradi AI zaposlenika',sr:'Napravi AI zaposlenog',bs:'Kreiraj AI zaposlenika',mk:'Креирај AI вработен',sl:'Ustvari AI zaposlenega',it:'Crea dipendente AI',tr:'Yapay zekâ çalışanı oluştur',ru:'Создать ИИ-сотрудника'},
-'New employee':{me:'Novi zaposleni',de:'Neuer Mitarbeiter',sq:'Punonjës i ri',hr:'Novi zaposlenik',sr:'Novi zaposleni',bs:'Novi zaposlenik',mk:'Нов вработен',sl:'Novi zaposleni',it:'Nuovo dipendente',tr:'Yeni çalışan',ru:'Новый сотрудник'},
-'Add booking':{me:'Dodaj rezervaciju',de:'Buchung hinzufügen',sq:'Shto rezervim',hr:'Dodaj rezervaciju',sr:'Dodaj rezervaciju',bs:'Dodaj rezervaciju',mk:'Додај резервација',sl:'Dodaj rezervacijo',it:'Aggiungi prenotazione',tr:'Rezervasyon ekle',ru:'Добавить бронирование'},
-'Save':{me:'Sačuvaj',de:'Speichern',sq:'Ruaj',hr:'Spremi',sr:'Sačuvaj',bs:'Sačuvaj',mk:'Зачувај',sl:'Shrani',it:'Salva',tr:'Kaydet',ru:'Сохранить'},
-'Cancel':{me:'Otkaži',de:'Abbrechen',sq:'Anulo',hr:'Odustani',sr:'Otkaži',bs:'Otkaži',mk:'Откажи',sl:'Prekliči',it:'Annulla',tr:'İptal',ru:'Отмена'},
-'Plan':{me:'Paket',de:'Tarif',sq:'Plani',hr:'Paket',sr:'Paket',bs:'Paket',mk:'План',sl:'Paket',it:'Piano',tr:'Plan',ru:'Тариф'},
-'Workspace ready':{me:'Radni prostor je spreman',de:'Arbeitsbereich bereit',sq:'Hapësira është gati',hr:'Radni prostor je spreman',sr:'Radni prostor je spreman',bs:'Radni prostor je spreman',mk:'Работниот простор е подготвен',sl:'Delovni prostor je pripravljen',it:'Spazio di lavoro pronto',tr:'Çalışma alanı hazır',ru:'Рабочее пространство готово'},
-'Business overview':{me:'Pregled poslovanja',de:'Geschäftsübersicht',sq:'Përmbledhja e biznesit',hr:'Pregled poslovanja',sr:'Pregled poslovanja',bs:'Pregled poslovanja',mk:'Преглед на бизнисот',sl:'Pregled poslovanja',it:'Panoramica aziendale',tr:'İşletme özeti',ru:'Обзор бизнеса'},
-'Users and activation':{me:'Korisnici i aktivacija',de:'Benutzer und Aktivierung',sq:'Përdoruesit dhe aktivizimi',hr:'Korisnici i aktivacija',sr:'Korisnici i aktivacija',bs:'Korisnici i aktivacija',mk:'Корисници и активација',sl:'Uporabniki in aktivacija',it:'Utenti e attivazione',tr:'Kullanıcılar ve aktivasyon',ru:'Пользователи и активация'},
-'Change admin password':{me:'Promijeni admin lozinku',de:'Admin-Passwort ändern',sq:'Ndrysho fjalëkalimin e adminit',hr:'Promijeni admin lozinku',sr:'Promeni admin lozinku',bs:'Promijeni admin lozinku',mk:'Промени админ лозинка',sl:'Spremeni skrbniško geslo',it:'Cambia password admin',tr:'Yönetici şifresini değiştir',ru:'Изменить пароль администратора'}
+
+const BA={
+ async api(url,options={}){
+  const r=await fetch(url,{credentials:"same-origin",headers:{"content-type":"application/json",...(options.headers||{})},...options});
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(d.error||"Request failed");
+  return d;
+ },
+ msg(text,type="error"){
+  const n=document.querySelector("#notice");if(!n)return;
+  n.textContent=text;n.style.display="block";
+  n.style.background=type==="ok"?"#12372d":"#301925";
+  n.style.borderColor=type==="ok"?"#286d58":"#673044";
+ },
+ async requireUser(admin=false){
+  try{
+   const {user}=await this.api("/api/auth/me");
+   if(admin&&!user.is_admin){location.href="/dashboard.html";return null}
+   return user;
+  }catch{location.href="/login.html";return null}
+ },
+ money(n){return new Intl.NumberFormat("en-GB",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(Number(n||0))},
+ escape(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))},
+ toggleMenu(){document.querySelector(".sidebar")?.classList.toggle("open")}
 };
-function applyLanguage(l){document.documentElement.lang=l;localStorage.setItem('ba_lang',l);if(l==='en')return;document.querySelectorAll('body *').forEach(el=>{if(el.children.length===0){const t=el.textContent.trim();if(P[t]?.[l])el.textContent=el.textContent.replace(t,P[t][l]);}});const ph={Email:'Email',Password:{de:'Passwort',sq:'Fjalëkalimi',mk:'Лозинка',sl:'Geslo',it:'Password',tr:'Şifre',ru:'Пароль'},'Full name':{me:'Ime i prezime',de:'Vollständiger Name',sq:'Emri i plotë',hr:'Ime i prezime',sr:'Ime i prezime',bs:'Ime i prezime',mk:'Име и презиме',sl:'Ime in priimek',it:'Nome completo',tr:'Ad soyad',ru:'Полное имя'},'Company name':{me:'Naziv firme',de:'Firmenname',sq:'Emri i kompanisë',hr:'Naziv tvrtke',sr:'Naziv firme',bs:'Naziv firme',mk:'Име на компанија',sl:'Ime podjetja',it:'Nome azienda',tr:'Şirket adı',ru:'Название компании'}};document.querySelectorAll('[placeholder]').forEach(e=>{const x=ph[e.placeholder];if(typeof x==='object'&&x[l])e.placeholder=x[l]});}
-function addLangPicker(){if(document.querySelector('#appLang'))return;const h=document.querySelector('.header');if(!h)return;const s=document.createElement('select');s.id='appLang';s.className='input';s.style='width:auto;max-width:150px;margin-left:auto';s.innerHTML=Object.entries(LANGS).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');s.value=localStorage.getItem('ba_lang')||'en';s.onchange=()=>location.reload(localStorage.setItem('ba_lang',s.value));h.insertBefore(s,h.lastElementChild?.classList.contains('btn')?h.lastElementChild:null)}
-document.addEventListener('DOMContentLoaded',()=>{addLangPicker();applyLanguage(localStorage.getItem('ba_lang')||navigator.language.slice(0,2)||'en')});window.BA={api,qs,qsa,msg,requireUser,applyLanguage};
+window.BA=BA;
