@@ -1,0 +1,23 @@
+BALKANAGENT VERIFICATION REPORT
+
+PASS - 404.html: HTML parsed
+PASS - dashboard.html: HTML parsed
+PASS - terms.html: HTML parsed
+PASS - login.html: HTML parsed
+PASS - privacy.html: HTML parsed
+PASS - index.html: HTML parsed
+PASS - register.html: HTML parsed
+PASS - dashboard.html: JavaScript valid
+PASS - login.html: JavaScript valid
+PASS - index.html: JavaScript valid
+PASS - register.html: JavaScript valid
+PASS - index.html: embedded images
+PASS - index.html: inline logo
+PASS - index.html: language selector
+PASS - index.html: demo modal
+PASS - index.html: chat modal
+PASS - index.html: pricing
+PASS - index.html: responsive CSS
+PASS - ZIP structure checked
+
+RESULT: ALL AUTOMATED CHECKS PASSED.

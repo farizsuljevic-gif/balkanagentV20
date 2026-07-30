@@ -1,1 +1,20 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Log in — BalkanAgent</title><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><a class="brand" href="index.html"><img src="logo.svg"></a></header><main style="min-height:75vh;display:grid;place-items:center;padding:30px"><section class="panel" style="width:min(520px,100%);padding:30px"><h1>Log in</h1><p style="color:#a8b1c4">Sign in to your BalkanAgent account.</p><form style="display:grid;gap:12px;margin-top:20px"><input style="padding:14px;background:#050b16;border:1px solid #26334b;color:white;border-radius:8px" placeholder="Email"><input type="password" style="padding:14px;background:#050b16;border:1px solid #26334b;color:white;border-radius:8px" placeholder="Password"><button class="btn primary" type="button">Continue →</button></form></section></main></body></html>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Prijava — BalkanAgent</title><style>
+body{margin:0;background:radial-gradient(circle at 50% 10%,#0a1740,#020611 45%,#01040a);color:#fff;font-family:Arial,sans-serif;min-height:100vh}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.box{width:min(460px,100%);background:#07111f;border:1px solid #1e2d46;border-radius:16px;padding:28px;box-shadow:0 20px 80px rgba(0,0,0,.45)}
+.logo{width:280px;margin-bottom:16px}.logo svg{width:100%}.box h1{margin:8px 0}.box p{color:#a8b2c4}.box input{width:100%;padding:13px;margin:7px 0;background:#030812;border:1px solid #283751;border-radius:8px;color:#fff;box-sizing:border-box}
+.box button,.box a.btn{display:block;width:100%;box-sizing:border-box;padding:14px;border:0;border-radius:8px;background:linear-gradient(135deg,#7627db,#225eff);color:#fff;font-weight:700;text-align:center;text-decoration:none;margin-top:10px}.back{display:inline-block;color:#9fb0cb;text-decoration:none;margin-bottom:8px}
+.notice{display:none;padding:10px;border-radius:8px;margin-top:12px;background:#12372d}
+</style></head><body><div class="wrap"><div class="box"><a class="back" href="index.html">← Početna</a><div class="logo"><svg viewBox="0 0 360 92" xmlns="http://www.w3.org/2000/svg" aria-label="BalkanAgent">
+<defs>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2b8"/><stop offset=".28" stop-color="#d5a842"/><stop offset=".58" stop-color="#6f4714"/><stop offset=".84" stop-color="#e8c465"/><stop offset="1" stop-color="#8b5e1b"/></linearGradient>
+<linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#76d7ff"/><stop offset=".35" stop-color="#287dff"/><stop offset="1" stop-color="#6531ff"/></linearGradient>
+</defs>
+<g transform="translate(2,4)">
+<path d="M0 0h54c25 0 39 10 39 28 0 11-6 19-17 24 15 4 24 13 24 27 0 21-18 33-46 33H0V0zm25 19v22h27c9 0 14-4 14-11 0-7-5-11-14-11H25zm0 41v27h31c11 0 17-5 17-14s-6-13-17-13H25z" fill="url(#gold)"/>
+<path d="M80 88 112 0h28l32 88h-28l-6-19h-32l-6 19H80zm33-39h19l-9-31-10 31z" fill="url(#blue)"/>
+</g>
+<text x="178" y="39" fill="#fff" font-size="24" font-family="Arial,Helvetica,sans-serif" font-weight="800">BALKAN<tspan fill="#4d7dff">AGENT</tspan></text>
+<text x="179" y="62" fill="#e8b84e" font-size="10" font-family="Arial,Helvetica,sans-serif" letter-spacing="1.5">AI AUTOMATION PLATFORM</text>
+</svg></div><h1>Prijava</h1><p>Prijavite se na BalkanAgent nalog.</p><form id="f"><input id="email" type="email" required placeholder="Email"><input id="password" type="password" required placeholder="Lozinka"><button>Prijavi se →</button></form><div class="notice" id="n"></div><p>Nemaš nalog? <a href="register.html">Registruj se</a></p></div></div><script>
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const users=JSON.parse(localStorage.getItem('ba-users')||'[]');const u=users.find(x=>x.email===email.value&&x.password===password.value);const n=document.getElementById('n');if(!u){n.style.display='block';n.textContent='Pogrešan email ili lozinka.';return}localStorage.setItem('ba-session',u.email);location.href='dashboard.html'};
+</script></body></html>

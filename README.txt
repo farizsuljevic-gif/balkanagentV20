@@ -1,15 +1,19 @@
-BalkanAgent — approved reference design recreation
+BalkanAgent FINAL WORKING
 
-Upload every file in this ZIP directly to the GitHub repository root.
-The landing page is index.html.
+Upload every file from this ZIP directly to the root of the GitHub repository.
 
-Included:
-- approved black / blue / purple / gold design
-- approved BA logo
-- hero, Balkan map, AI employee and dashboard
-- integrations, workflow, pricing, testimonials and footer
-- responsive mobile version
-- language selector with Crnogorski as default
-- login/register/legal placeholder pages
+This version fixes the previous deployment problems:
+- all homepage CSS, JavaScript, logo and major visuals are embedded directly in index.html
+- no broken absolute paths
+- no missing image folders
+- responsive desktop/mobile layout
+- working language switcher
+- working demo request modal
+- working newsletter form
+- working demo chat
+- working registration, login, session and dashboard using browser localStorage
+- legal and 404 pages included
 
-The map/dashboard visual crops come from the reference image supplied by the owner.
+Important:
+localStorage login is a functional static demo, not a secure production backend.
+Real customer accounts, payments, email delivery and database storage require a secure backend.
