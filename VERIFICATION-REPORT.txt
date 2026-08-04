@@ -1,1 +1,11 @@
-RESULT: ALL STATIC CHECKS PASSED
+BALKANAGENT V6 CLEAN PREMIUM
+
+Homepage logo image removed: YES
+Homepage rebuilt as real responsive HTML: YES
+Map included: YES
+Dashboard included: YES
+MP4 demo included: YES
+Local links checked: YES
+JavaScript syntax checked: YES
+
+RESULT: ALL CHECKS PASSED

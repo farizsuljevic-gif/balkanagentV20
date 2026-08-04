@@ -1,8 +1,152 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>BalkanAgent</title><link rel='stylesheet' href='styles.css'><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="app.js"></script></head><body>
-<div class='stage'>
-<img class='top-logo' src='logo.png' alt='BalkanAgent'>
-<a class='hot trialBtn' href='register.html' aria-label='Start free trial'></a><button class='hot demoBtn' id='demoBtn' aria-label='Book a demo'></button><a class='hot loginBtn' href='login.html'></a><a class='hot startTop' href='register.html'></a><a class='hot pricing1' href='register.html'></a><a class='hot pricing2' href='register.html'></a><a class='hot pricing3' href='register.html'></a><button class='hot videoTrigger' id='videoBtn'></button>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="BalkanAgent builds AI employees for businesses across the Balkans.">
+  <title>BalkanAgent — AI Automation for the Balkans</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="wordmark" href="#home" aria-label="BalkanAgent home">
+    <span>BALKAN</span><strong>AGENT</strong>
+    <small>AI AUTOMATION FOR THE BALKANS</small>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+  <nav class="main-nav" id="mainNav">
+    <a href="#home">Home</a>
+    <a href="#solutions">Solutions</a>
+    <a href="#how">How It Works</a>
+    <a href="#demo">Demo</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a class="login-link" href="login.html">Log in</a>
+    <a class="button primary" href="register.html">Start Free Trial →</a>
+  </div>
+</header>
+
+<main>
+<section class="hero section-shell" id="home">
+  <div class="hero-copy">
+    <div class="badge">★ AI AUTOMATION PLATFORM FOR THE BALKANS</div>
+    <h1>Your business.<br><span>Our AI.</span></h1>
+    <p>Deploy an AI employee that answers customers, captures leads, supports bookings and works around the clock—directly on your website.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="register.html">Start Free Trial →</a>
+      <button class="button secondary" id="openDemo">▶ Watch Demo</button>
+    </div>
+    <div class="trust-row">
+      <span>✓ 14-day test access</span>
+      <span>✓ No card required</span>
+      <span>✓ Built for Balkan markets</span>
+    </div>
+  </div>
+
+  <div class="network-card premium-card">
+    <img src="balkan-network.png" alt="Connected Balkan business network">
+    <div class="channel-stack">
+      <span>◎ Website</span><span>● WhatsApp</span><span>◉ Instagram</span><span>● Messenger</span><span>◆ Viber</span>
+    </div>
+    <div class="employee-card">
+      <strong>AI Employee</strong>
+      <small>Working for you 24/7</small>
+      <img src="ai-employee.png" alt="AI employee">
+      <em>● ACTIVE</em>
+    </div>
+  </div>
+
+  <div class="dashboard-card premium-card">
+    <div class="dashboard-top"><strong>Live Overview</strong><span>All Channels</span></div>
+    <img src="dashboard-preview.png" alt="BalkanAgent dashboard preview">
+    <div class="dashboard-note">One place for leads, bookings and conversations.</div>
+  </div>
+</section>
+
+<section class="metrics section-shell premium-card">
+  <div><strong>24/7</strong><span>AI availability</span></div>
+  <div><strong>11+</strong><span>Supported languages</span></div>
+  <div><strong>1 code</strong><span>Website installation</span></div>
+  <div><strong>Real leads</strong><span>Captured automatically</span></div>
+  <div><strong>Fast setup</strong><span>Built for testing</span></div>
+  <div><strong>One dashboard</strong><span>Everything together</span></div>
+</section>
+
+<section class="content-grid section-shell" id="solutions">
+  <article class="section-panel premium-card">
+    <p class="section-kicker">POWERFUL AI SOLUTIONS</p>
+    <div class="solution-grid">
+      <div class="mini-card"><i>💬</i><h3>Instant answers</h3><p>Reply to common customer questions without delays.</p></div>
+      <div class="mini-card"><i>📅</i><h3>Booking support</h3><p>Guide customers through appointments and reservations.</p></div>
+      <div class="mini-card"><i>🎯</i><h3>Lead capture</h3><p>Collect names, phone numbers, emails and requests.</p></div>
+      <div class="mini-card"><i>🌍</i><h3>Multilingual</h3><p>Serve customers across the Balkans and beyond.</p></div>
+    </div>
+  </article>
+
+  <article class="section-panel premium-card" id="how">
+    <p class="section-kicker">HOW BALKANAGENT WORKS</p>
+    <div class="steps">
+      <div><b>01</b><h3>Create an account</h3><p>Register your business securely.</p></div>
+      <div><b>02</b><h3>Configure your AI</h3><p>Add services, answers and contact information.</p></div>
+      <div><b>03</b><h3>Connect your website</h3><p>Install one lightweight script.</p></div>
+      <div><b>04</b><h3>Start capturing leads</h3><p>See requests inside your dashboard.</p></div>
+    </div>
+  </article>
+</section>
+
+<section class="video-section section-shell" id="demo">
+  <div class="video-copy">
+    <p class="section-kicker">SEE THE AI EMPLOYEE IN ACTION</p>
+    <h2>A short presentation that shows what your customers experience.</h2>
+    <p>Watch messages arrive, see the AI respond and follow how a new lead moves into the dashboard.</p>
+    <button class="button primary" id="openDemoTwo">Play Presentation →</button>
+  </div>
+  <button class="video-cover premium-card" id="openDemoThree" aria-label="Play BalkanAgent demo">
+    <img src="balkan-network.png" alt="Demo preview">
+    <span class="play">▶</span>
+    <strong>WATCH DEMO</strong>
+  </button>
+</section>
+
+<section class="pricing-section section-shell" id="pricing">
+  <p class="section-kicker">SIMPLE, TRANSPARENT PRICING</p>
+  <div class="pricing-grid">
+    <article class="price-card premium-card"><h3>Starter</h3><strong>€49<small>/month</small></strong><p>For small businesses testing automation.</p><ul><li>1 website AI employee</li><li>Lead capture</li><li>Basic dashboard</li><li>Email support</li></ul><a class="button outline" href="register.html">Start Trial</a></article>
+    <article class="price-card premium-card featured"><span class="popular">MOST POPULAR</span><h3>Business</h3><strong>€99<small>/month</small></strong><p>For growing businesses with more demand.</p><ul><li>3 AI employees</li><li>Advanced lead capture</li><li>Priority dashboard</li><li>Priority support</li></ul><a class="button primary" href="register.html">Start Trial</a></article>
+    <article class="price-card premium-card"><h3>Pro</h3><strong>€199<small>/month</small></strong><p>For established businesses and teams.</p><ul><li>10 AI employees</li><li>Custom branding</li><li>Advanced analytics</li><li>Onboarding support</li></ul><a class="button outline" href="register.html">Start Trial</a></article>
+    <article class="price-card premium-card"><h3>Enterprise</h3><strong>Custom</strong><p>For organizations with custom requirements.</p><ul><li>Custom limits</li><li>Custom integrations</li><li>Dedicated support</li><li>SLA options</li></ul><a class="button gold" href="#contact">Contact Sales</a></article>
+  </div>
+</section>
+
+<section class="cta-section section-shell premium-card" id="contact">
+  <div><p class="section-kicker">READY TO TEST BALKANAGENT?</p><h2>Give your business an AI employee.</h2><p>Start with a test account and see how the platform fits your business.</p></div>
+  <div class="cta-actions"><a class="button primary" href="register.html">Create Test Account →</a><a class="button secondary" href="mailto:info@balkanagent.com">info@balkanagent.com</a></div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-wordmark"><span>BALKAN</span><strong>AGENT</strong><small>AI AUTOMATION FOR THE BALKANS</small></div>
+  <p>+382 68 400 509 · info@balkanagent.com · ceo@balkanagent.com</p>
+  <p>© 2026 BalkanAgent. All rights reserved.</p>
+</footer>
+
+<div class="modal" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" id="closeDemo">×</button>
+    <video id="demoVideo" controls playsinline preload="metadata"><source src="balkanagent-demo.mp4" type="video/mp4"></video>
+  </div>
 </div>
-<section class='mobile'><img src='logo.png'><h1>The AI Platform Built for the Balkans.</h1><p>Automate conversations, bookings and customer support. Save time, close more deals and grow faster.</p><a class='btn' href='register.html'>Start Free Trial</a><button class='btn' id='mobileVideo'>Watch Demo</button><img class='mapshot' src='reference-layout.jpg'></section>
-<div class='modal' id='modal'><div class='modalbox'><button class='close' id='close'>×</button><video controls playsinline preload='metadata'><source src='balkanagent-demo.mp4' type='video/mp4'></video></div></div>
-<script>const m=document.getElementById('modal');['demoBtn','videoBtn','mobileVideo'].forEach(id=>{const e=document.getElementById(id);if(e)e.onclick=()=>m.classList.add('open')});document.getElementById('close').onclick=()=>m.classList.remove('open');m.onclick=e=>{if(e.target===m)m.classList.remove('open')}</script></body></html>
+<script>
+const menuToggle=document.getElementById('menuToggle');
+const mainNav=document.getElementById('mainNav');
+menuToggle.onclick=()=>mainNav.classList.toggle('open');
+const modal=document.getElementById('demoModal');
+const video=document.getElementById('demoVideo');
+['openDemo','openDemoTwo','openDemoThree'].forEach(id=>document.getElementById(id).onclick=()=>{modal.classList.add('open');video.play().catch(()=>{})});
+document.getElementById('closeDemo').onclick=()=>{modal.classList.remove('open');video.pause()};
+modal.onclick=e=>{if(e.target===modal){modal.classList.remove('open');video.pause()}};
+</script>
+</body>
+</html>
