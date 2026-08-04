@@ -1,4 +1,1 @@
-Upload all files directly to the GitHub root.
-Run SUPABASE-SETUP.sql in Supabase SQL Editor.
-Set Authentication Site URL to https://balkanagent.com
-Add https://balkanagent.com/** and the pages.dev preview URL to Redirect URLs.
+Upload every file directly to the GitHub root. Run SUPABASE-SETUP.sql once in Supabase SQL Editor. Set Site URL to https://balkanagent.com and allow https://balkanagent.com/** in Redirect URLs.
