@@ -1,20 +1,34 @@
 
 (() => {
   "use strict";
-  const K={users:"ba_ref_users",session:"ba_ref_session",demos:"ba_ref_demos"};
-  const ADMIN={id:"admin",name:"BalkanAgent Admin",company:"BalkanAgent",email:"admin@balkanagent.com",password:"BalkanAgent2026!",role:"admin",plan:"Enterprise"};
-  function read(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}
-  function write(k,v){localStorage.setItem(k,JSON.stringify(v));return v}
-  function init(){const u=read(K.users,[]);const a=u.find(x=>x.email===ADMIN.email);if(!a)u.unshift({...ADMIN});else Object.assign(a,ADMIN);write(K.users,u)}
-  function users(){return read(K.users,[])}
-  function current(){const e=localStorage.getItem(K.session);return e?users().find(x=>x.email===e)||null:null}
-  function login(email,password,adminOnly=false){const u=users().find(x=>x.email.toLowerCase()===String(email).trim().toLowerCase()&&x.password===String(password));if(!u)throw new Error("Pogrešan email ili lozinka.");if(adminOnly&&u.role!=="admin")throw new Error("Nalog nema administratorski pristup.");localStorage.setItem(K.session,u.email);return u}
-  function register(d){const list=users(),email=String(d.email||"").trim().toLowerCase();if(!d.name||!email||!d.password)throw new Error("Popunite obavezna polja.");if(d.password.length<8)throw new Error("Lozinka mora imati najmanje 8 znakova.");if(list.some(x=>x.email.toLowerCase()===email))throw new Error("Email je već registrovan.");const u={id:"u-"+Date.now(),name:d.name,company:d.company||"",email,password:d.password,role:"user",plan:"Starter"};list.push(u);write(K.users,list);localStorage.setItem(K.session,email);return u}
-  function requireUser(adminOnly=false){const u=current();if(!u){location.href=adminOnly?"admin-login.html":"login.html";return null}if(adminOnly&&u.role!=="admin"){localStorage.removeItem(K.session);location.href="admin-login.html";return null}return u}
-  function logout(){localStorage.removeItem(K.session);location.href="index.html"}
-  function update(id,changes){const list=users(),u=list.find(x=>x.id===id);if(!u)throw new Error("Korisnik nije pronađen.");Object.assign(u,changes);write(K.users,list);return u}
-  function remove(id){const target=users().find(x=>x.id===id);if(!target||target.role==="admin")return;write(K.users,users().filter(x=>x.id!==id))}
+  const cfg=window.BA_CONFIG;
+  const client=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+  const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
   function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-  function notice(msg,ok=false){const e=document.getElementById("notice");if(!e)return;e.textContent=msg;e.className="notice show "+(ok?"ok":"error")}
-  init();window.BA={K,ADMIN,read,write,users,current,login,register,requireUser,logout,update,remove,esc,notice};
+  function notice(msg,ok=false){const e=q("#notice");if(e){e.textContent=msg;e.className="notice show "+(ok?"ok":"error")}}
+  function lang(){return localStorage.getItem("ba_lang")||"me"}
+  function applyLang(code=lang()){localStorage.setItem("ba_lang",code);document.documentElement.lang=code;const d={...(BA_I18N.en||{}),...(BA_I18N[code]||{})};qa("[data-i18n]").forEach(e=>{if(d[e.dataset.i18n])e.textContent=d[e.dataset.i18n]});qa("[data-lang-select]").forEach(e=>e.value=code)}
+  async function session(){const {data,error}=await client.auth.getSession();if(error)throw error;return data.session}
+  async function profile(id){const {data,error}=await client.from("profiles").select("*").eq("id",id).single();if(error)throw error;return data}
+  async function requireUser(admin=false){const s=await session();if(!s){location.href=admin?"admin-login.html":"login.html";return null}const p=await profile(s.user.id);if(admin&&p.role!=="admin"){await client.auth.signOut();location.href="admin-login.html";return null}return {session:s,profile:p}}
+  async function signup(d){const {data,error}=await client.auth.signUp({email:d.email,password:d.password,options:{data:{full_name:d.fullName,company_name:d.companyName},emailRedirectTo:location.origin+"/dashboard.html"}});if(error)throw error;return data}
+  async function signin(email,password){const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;return data}
+  async function signout(){await client.auth.signOut();location.href="index.html"}
+  async function reset(email){const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+"/reset-password.html"});if(error)throw error}
+  async function updatePassword(password){const {error}=await client.auth.updateUser({password});if(error)throw error}
+  async function updateProfile(id,changes){const {data,error}=await client.from("profiles").update(changes).eq("id",id).select().single();if(error)throw error;return data}
+  async function listBots(){const {data,error}=await client.from("bots").select("*").order("created_at",{ascending:false});if(error)throw error;return data||[]}
+  async function createBot(payload){const s=await session();const {data,error}=await client.from("bots").insert({...payload,user_id:s.user.id}).select().single();if(error)throw error;return data}
+  async function updateBot(id,payload){const {data,error}=await client.from("bots").update(payload).eq("id",id).select().single();if(error)throw error;return data}
+  async function deleteBot(id){const {error}=await client.from("bots").delete().eq("id",id);if(error)throw error}
+  async function listFaqs(botId){const {data,error}=await client.from("bot_faqs").select("*").eq("bot_id",botId).order("created_at");if(error)throw error;return data||[]}
+  async function saveFaqs(botId,faqs){await client.from("bot_faqs").delete().eq("bot_id",botId);if(faqs.length){const {error}=await client.from("bot_faqs").insert(faqs.map(x=>({...x,bot_id:botId})));if(error)throw error}}
+  async function listLeads(){const {data,error}=await client.from("leads").select("*,bots(name)").order("created_at",{ascending:false});if(error)throw error;return data||[]}
+  async function submitDemo(payload){const {error}=await client.from("demo_requests").insert(payload);if(error)throw error}
+  async function requestPlan(plan){const s=await session();const {error}=await client.from("payment_requests").insert({user_id:s.user.id,plan,status:"pending"});if(error)throw error}
+  async function adminData(){const [p,b,l,d,r]=await Promise.all([client.from("profiles").select("*").order("created_at",{ascending:false}),client.from("bots").select("*").order("created_at",{ascending:false}),client.from("leads").select("*").order("created_at",{ascending:false}),client.from("demo_requests").select("*").order("created_at",{ascending:false}),client.from("payment_requests").select("*").order("created_at",{ascending:false})]);for(const x of [p,b,l,d,r])if(x.error)throw x.error;return {profiles:p.data||[],bots:b.data||[],leads:l.data||[],demos:d.data||[],requests:r.data||[]}}
+  async function adminUpdateProfile(id,changes){const {error}=await client.from("profiles").update(changes).eq("id",id);if(error)throw error}
+  async function adminUpdatePayment(id,changes){const {error}=await client.from("payment_requests").update(changes).eq("id",id);if(error)throw error}
+  window.BA={client,esc,notice,lang,applyLang,session,profile,requireUser,signup,signin,signout,reset,updatePassword,updateProfile,listBots,createBot,updateBot,deleteBot,listFaqs,saveFaqs,listLeads,submitDemo,requestPlan,adminData,adminUpdateProfile,adminUpdatePayment,q,qa};
+  document.addEventListener("DOMContentLoaded",()=>{applyLang();qa("[data-lang-select]").forEach(s=>s.addEventListener("change",e=>applyLang(e.target.value)))});
 })();

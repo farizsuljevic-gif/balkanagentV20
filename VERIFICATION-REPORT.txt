@@ -1,9 +1,11 @@
-BALKANAGENT SUPABASE TEST V1
+BALKANAGENT V1 LAUNCH VERIFICATION
 
-Files checked: 22
-Local links: checked
-JavaScript syntax: checked
-Supabase config: present
-SQL schema and RLS: included
+Files checked: 25
+Local file references: checked
+Inline JavaScript syntax: checked
+Shared JavaScript syntax: checked
+Supabase schema and RLS: included
+ZIP structure: root files only
 
-RESULT: ALL STATIC CHECKS PASSED.
+RESULT: ERRORS FOUND
+bots.html: missing ${location.origin}/widget.js
