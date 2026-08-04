@@ -1,16 +1,10 @@
-BALKANAGENT LUXURY FINAL — VERIFICATION
+BALKANAGENT REFERENCE FINAL — VERIFICATION
 
-Files checked: 11
-Landing page: self-contained, no external images or frameworks
-Map: inline SVG, always visible
-Demo form: working
-Chat demo: working
-Newsletter form: working
-Registration: working
-User login: working
-Admin login: working
-Dashboard: working
-Profile/password update: working
+Design: based directly on the supplied reference image
+Logo: cropped from supplied reference
+Map: cropped from supplied reference
+Dashboard: cropped from supplied reference
+Files checked: 16
 Local links: checked
 JavaScript syntax: checked
 
