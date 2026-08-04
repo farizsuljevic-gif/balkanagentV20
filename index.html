@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="me">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="BalkanAgent builds AI employees for businesses across the Balkans.">
   <title>BalkanAgent — AI Automation for the Balkans</title>
   <link rel="stylesheet" href="styles.css">
-</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="i18n.js"></script><script src="app.js"></script></head>
 <body>
 <header class="site-header">
   <a class="wordmark" href="#home" aria-label="BalkanAgent home">
@@ -15,28 +15,25 @@
   </a>
   <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
   <nav class="main-nav" id="mainNav">
-    <a href="#home">Home</a>
-    <a href="#solutions">Solutions</a>
-    <a href="#how">How It Works</a>
-    <a href="#demo">Demo</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+    <a href="#home" data-i18n="home">Početna</a>
+    <a href="#solutions" data-i18n="solutions">Rješenja</a>
+    <a href="#how" data-i18n="how">Kako radi</a>
+    <a href="#demo" data-i18n="demo">Demo</a>
+    <a href="#pricing" data-i18n="pricing">Cijene</a>
+    <a href="#contact" data-i18n="contact">Kontakt</a>
   </nav>
-  <div class="header-actions">
-    <a class="login-link" href="login.html">Log in</a>
-    <a class="button primary" href="register.html">Start Free Trial →</a>
-  </div>
+  <div class="header-actions"><select class="language-select" data-lang><option value="me">🇲🇪 Crnogorski</option><option value="en">🇬🇧 English</option><option value="de">🇩🇪 Deutsch</option><option value="ru">🇷🇺 Русский</option></select><a class="login-link" href="login.html" data-i18n="login">Prijava</a><a class="button primary" href="register.html" data-i18n="start">Započni besplatno</a></div>
 </header>
 
 <main>
 <section class="hero section-shell" id="home">
   <div class="hero-copy">
     <div class="badge">★ AI AUTOMATION PLATFORM FOR THE BALKANS</div>
-    <h1>Your business.<br><span>Our AI.</span></h1>
-    <p>Deploy an AI employee that answers customers, captures leads, supports bookings and works around the clock—directly on your website.</p>
+    <h1><span data-i18n="hero">AI zaposleni za vaš biznis, dostupni 24/7.</span></h1>
+    <p><span data-i18n="lead">Automatizujte razgovore, rezervacije i prikupljanje leadova kroz moderan AI interfejs.</span></p>
     <div class="hero-actions">
-      <a class="button primary" href="register.html">Start Free Trial →</a>
-      <button class="button secondary" id="openDemo">▶ Watch Demo</button>
+      <a class="button primary" href="register.html"><span data-i18n="start">Započni besplatno</span></a>
+      <button class="button secondary" id="openDemo">▶ <span data-i18n="watch">Pogledaj demo</span></button>
     </div>
     <div class="trust-row">
       <span>✓ 14-day test access</span>
