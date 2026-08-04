@@ -1,20 +1,12 @@
 
 create table if not exists public.profiles(
  id uuid primary key references auth.users(id) on delete cascade,
- email text not null unique,
- full_name text,
- company_name text,
- role text not null default 'user',
- status text not null default 'trial',
- plan text not null default 'Starter',
- created_at timestamptz not null default now()
+ email text not null unique,full_name text,company_name text,
+ role text not null default 'user',status text not null default 'trial',
+ plan text not null default 'Starter',created_at timestamptz default now()
 );
 create or replace function public.handle_new_user() returns trigger language plpgsql security definer set search_path='' as $$
-begin
- insert into public.profiles(id,email,full_name,company_name)
- values(new.id,new.email,new.raw_user_meta_data->>'full_name',new.raw_user_meta_data->>'company_name');
- return new;
-end; $$;
+begin insert into public.profiles(id,email,full_name,company_name) values(new.id,new.email,new.raw_user_meta_data->>'full_name',new.raw_user_meta_data->>'company_name');return new;end;$$;
 drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created after insert on auth.users for each row execute procedure public.handle_new_user();
 alter table public.profiles enable row level security;

@@ -1,5 +1,1 @@
-window.BA_CONFIG={
-  supabaseUrl:"https://ijskoumelruuecrhemyu.supabase.co",
-  supabaseKey:"sb_publishable_gxNgY61vTWvwvAa_PAnu2g_y8EuloMX",
-  siteUrl:"https://balkanagent.com"
-};
+window.BA_CONFIG={supabaseUrl:"https://ijskoumelruuecrhemyu.supabase.co",supabaseKey:"sb_publishable_gxNgY61vTWvwvAa_PAnu2g_y8EuloMX"};
