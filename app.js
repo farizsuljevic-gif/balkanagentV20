@@ -30,6 +30,22 @@ leadForm?.addEventListener('submit', async (event) => {
   button.textContent = 'Šaljem...';
   formStatus.textContent = '';
   try {
+    const data = Object.fromEntries(new FormData(leadForm).entries());
+    const leads = JSON.parse(localStorage.getItem('ba_leads') || '[]');
+    leads.unshift({
+      id: Date.now(),
+      createdAt: new Date().toISOString(),
+      name: data.name || '',
+      company: data.company || '',
+      email: data.email || '',
+      phone: data.phone || '',
+      package: data.package || '',
+      industry: data.industry || '',
+      message: data.message || '',
+      status: 'Novi'
+    });
+    localStorage.setItem('ba_leads', JSON.stringify(leads));
+
     const response = await fetch(leadForm.action, {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
@@ -81,13 +97,13 @@ function appendMessage(text, type) {
 function demoReply(message) {
   const text = message.toLowerCase();
   if (/(cijen|cena|košta|kosta|paket)/.test(text)) {
-    return 'Početni paket kreće od 79 € mjesečno. Konačna cijena zavisi od kanala, broja upita i potrebnih integracija. Pošaljite kratke informacije kroz formu i dobićete konkretnu procjenu.';
+    return 'Paketi su Starter 49 €, Business 79 €, Professional 199 €, dok se Enterprise paket ugovara prema potrebama firme. Izaberite paket u formi ili pošaljite upit za preporuku.';
   }
   if (/(whatsapp|instagram|messenger|viber)/.test(text)) {
-    return 'Balkan Agent može povezati komunikacione kanale koje vaša firma već koristi. Tačna dostupnost zavisi od poslovnog naloga i dozvola platforme, pa prvo provjeravamo vaš postojeći setup.';
+    return 'Moguće integracije zavise od poslovnog naloga, dozvola platforme i tehničkih uslova. Prije ponude provjeravamo šta je zaista dostupno.';
   }
   if (/(termin|rezerv|zakaz)/.test(text)) {
-    return 'AI recepcioner može odgovarati na česta pitanja, provjeravati dostupnost i prikupljati podatke za rezervaciju. Za potpuno automatsko zakazivanje povezujemo kalendar ili vaš postojeći sistem.';
+    return 'Rješenje se može pripremiti za česta pitanja, provjeru dostupnosti i prikupljanje podataka za rezervaciju. Automatsko zakazivanje zavisi od sistema koji firma već koristi.';
   }
   if (/(hotel|apartman|restoran|salon|ordinacij|nekretn|autoservis|auto servis)/.test(text)) {
     return 'To je djelatnost za koju se može napraviti prilagođen AI agent. Potrebni su nam vaše usluge, cijene, radno vrijeme, česta pitanja i način na koji sada primate upite.';
@@ -117,3 +133,14 @@ chatForm?.addEventListener('submit', event => {
   sendChatMessage(text);
 });
 $$('.chat-suggestions button').forEach(button => button.addEventListener('click', () => sendChatMessage(button.textContent)));
+
+
+// Preselect package from pricing cards
+document.querySelectorAll('[data-package]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const select = document.getElementById('package-select');
+    if (!select) return;
+    const match = [...select.options].find(o => o.text.startsWith(link.dataset.package));
+    if (match) select.value = match.value;
+  });
+});

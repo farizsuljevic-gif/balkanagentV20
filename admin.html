@@ -1,1 +1,61 @@
-<!doctype html><html lang="me"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin panel — BalkanAgent</title><link rel="stylesheet" href="styles.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="i18n.js"></script><script src="app.js"></script></head><body><div class="app-layout"><aside class="sidebar"><div class="brand">BALKAN<strong>AGENT</strong></div><a href="admin.html" class="active" data-i18n="admin">Admin panel</a><a href="index.html">Javni sajt</a><a href="#" id="logoutSide" data-i18n="logout">Odjava</a></aside><main class="app-content"><header class="topbar"><div><h1>Admin panel</h1><p id="welcome" style="color:#a8b2c2"></p></div><div><select class="language-select" data-lang><option value="me">🇲🇪 Crnogorski</option><option value="en">🇬🇧 English</option><option value="de">🇩🇪 Deutsch</option><option value="ru">🇷🇺 Русский</option></select> <button class="button primary" id="logout" data-i18n="logout">Odjava</button></div></header><section class="metrics4"><article class="metric-card"><span>Korisnici</span><b id="count">0</b></article><article class="metric-card"><span>Trial</span><b id="trial">0</b></article><article class="metric-card"><span>Aktivni</span><b id="active">0</b></article><article class="metric-card"><span>Admini</span><b id="admins">0</b></article></section><section class="app-card" style="margin-top:14px"><h2>Korisnici</h2><div class="table-wrap"><table><thead><tr><th>Ime</th><th>Email</th><th>Firma</th><th>Paket</th><th>Status</th><th>Uloga</th></tr></thead><tbody id="rows"></tbody></table></div><div id="notice" class="notice"></div></section></main></div><script>(async()=>{try{const auth=await BA.requireUser(true);if(!auth)return;welcome.textContent=(auth.profile.full_name||auth.profile.email)+' · '+(auth.profile.company_name||'BalkanAgent');logout.onclick=BA.signOut;logoutSide.onclick=e=>{e.preventDefault();BA.signOut()};async function render(){const list=await BA.adminUsers();count.textContent=list.length;trial.textContent=list.filter(x=>x.status==='trial').length;active.textContent=list.filter(x=>x.status==='active').length;admins.textContent=list.filter(x=>x.role==='admin').length;rows.innerHTML=list.map(x=>`<tr><td>${BA.esc(x.full_name||'')}</td><td>${BA.esc(x.email)}</td><td>${BA.esc(x.company_name||'')}</td><td><select data-id="${x.id}" data-field="plan">${['Starter','Business','Pro','Enterprise'].map(v=>`<option ${x.plan===v?'selected':''}>${v}</option>`).join('')}</select></td><td><select data-id="${x.id}" data-field="status">${['trial','active','suspended'].map(v=>`<option ${x.status===v?'selected':''}>${v}</option>`).join('')}</select></td><td>${BA.esc(x.role)}</td></tr>`).join('');document.querySelectorAll('[data-id]').forEach(s=>s.onchange=async()=>{try{await BA.adminUpdateUser(s.dataset.id,{[s.dataset.field]:s.value});BA.notice('Korisnik je ažuriran.',true)}catch(x){BA.notice(x.message)}})}render();}catch(x){alert(x.message);console.error(x)}})();</script></body></html>
+<!doctype html>
+<html lang="cnr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#071019" />
+  <title>Balkan Agent — Admin test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="admin-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-mark"><span>B</span><span>A</span></span><span class="brand-name">BALKAN <strong>AGENT</strong></span></a>
+      <a class="button button-small button-outline" href="index.html">Nazad na sajt</a>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="container" id="admin-login">
+      <div class="admin-login-card">
+        <p class="eyebrow">Testni pristup</p>
+        <h1>Admin panel</h1>
+        <p>Prijava za testni admin panel.</p>
+        <label>Admin e-mail<input id="admin-email" type="email" autocomplete="username" value="ceo@balkanagent.com" /></label>
+        <label>Šifra<input id="admin-password" type="password" autocomplete="current-password" /></label>
+        <button id="admin-login-button" class="button button-primary full" type="button">Prijavi se</button>
+        <p class="form-status" id="admin-login-status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="container" id="admin-dashboard" hidden>
+      <div class="admin-head">
+        <div><p class="eyebrow">Balkan Agent</p><h1>Primljeni upiti</h1><p>Testni panel za provjeru forme prije produkcionog backend sistema.</p></div>
+        <div class="admin-actions"><button id="add-test-lead" class="button button-outline" type="button">Dodaj testni upit</button><button id="export-leads" class="button button-outline" type="button">Izvezi CSV</button><button id="admin-logout" class="button button-ghost" type="button">Odjava</button></div>
+      </div>
+      <div class="admin-metrics">
+        <article><small>Ukupno</small><strong id="metric-total">0</strong></article>
+        <article><small>Novi</small><strong id="metric-new">0</strong></article>
+        <article><small>Kontaktirani</small><strong id="metric-contacted">0</strong></article>
+        <article><small>Business 79 €</small><strong id="metric-business">0</strong></article>
+      </div>
+      <div class="admin-toolbar">
+        <label>Pretraga<input id="lead-search" type="search" placeholder="Ime, firma, e-mail..." /></label>
+        <label>Status<select id="lead-filter"><option value="">Svi</option><option>Novi</option><option>Kontaktiran</option><option>Završen</option></select></label>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Datum</th><th>Klijent</th><th>Paket</th><th>Kontakt</th><th>Status</th><th>Akcije</th></tr></thead>
+          <tbody id="lead-table-body"></tbody>
+        </table>
+        <div class="admin-empty" id="admin-empty" hidden>Nema upita za prikaz.</div>
+      </div>
+      <p class="admin-warning">Važno: ovaj testni admin panel čuva podatke samo u ovom pregledniku. Upiti sa javnog sajta se dodatno šalju na info@balkanagent.com preko FormSubmit-a. Za zajednički admin panel na svim uređajima potreban je pravi backend i baza podataka.</p>
+    </section>
+  </main>
+  <script src="admin.js" defer></script>
+</body>
+</html>

@@ -1,37 +1,36 @@
-# Balkan Agent — GitHub flat verzija
+# Balkan Agent — GitHub / Cloudflare Pages
 
-Ova verzija nema nijedan folder. Sve fajlove ubacite direktno u glavni dio GitHub repozitorijuma:
+Ovo je ravna verzija projekta bez foldera. Postavite sve fajlove direktno u korijen GitHub repozitorijuma.
 
-- index.html
-- styles.css
-- app.js
-- privacy.html
-- terms.html
-- README.md
-
-## GitHub upload
-
-1. Otvorite svoj repozitorijum.
-2. Kliknite **Add file → Upload files**.
-3. Označite svih šest fajlova iz ovog paketa.
-4. Kliknite **Commit changes**.
-5. U Cloudflare Pages povežite isti GitHub repozitorijum.
-6. Build command ostavite prazno, a output directory postavite na `/` ili ostavite podrazumijevano ako Cloudflare to dozvoli.
+## Fajlovi
+- index.html — javni sajt
+- styles.css — dizajn
+- app.js — meni, demo chat, kontakt forma i lokalno čuvanje testnih upita
+- admin.html — testni admin panel
+- admin.js — logika admin panela
+- balkan-agent-demo.mp4 — video prezentacija
+- privacy.html — politika privatnosti
+- terms.html — uslovi korišćenja
 
 ## Kontakt forma
+Forma šalje upite na `info@balkanagent.com` preko FormSubmit AJAX servisa. Kod prvog slanja FormSubmit može poslati aktivacioni e-mail koji morate potvrditi.
 
-Forma šalje upite preko FormSubmit na `info@balkanagent.com`. Nakon prvog probnog slanja FormSubmit obično pošalje aktivacionu poruku na tu adresu. Otvorite je i potvrdite adresu; prije potvrde forma neće normalno prosljeđivati upite.
+## Admin test
+Otvorite `/admin.html`.
 
-Ako koristite drugi e-mail, u `index.html` pronađite:
+Admin e-mail: `ceo@balkanagent.com`
 
-`https://formsubmit.co/ajax/info@balkanagent.com`
+Testna šifra: `BA-TEST-2026`
 
-i zamijenite samo e-mail adresu.
+Testna šifra:
+`BA-TEST-2026`
 
-## AI demo
+Admin panel prikazuje upite koji su poslati u istom pregledniku i omogućava promjenu statusa, brisanje i CSV izvoz. Ovo je funkcionalno za testiranje, ali nije produkcioni višekorisnički admin panel: za pristup istim podacima sa svih uređaja potreban je backend i baza podataka.
 
-Chat je demonstracioni i radi odmah, bez API ključa i bez backend foldera. Daje unaprijed programirane, realne odgovore o cijeni, kanalima, rezervacijama i uslugama. Pravi generativni AI chat zahtijeva backend ili Cloudflare Worker, što se ne može bez dodatne serverske konfiguracije.
-
-## Prije lansiranja
-
-Provjerite kontakt e-mail, pravne tekstove, cijenu i sve tvrdnje na sajtu. Politika privatnosti i uslovi su početni tekstovi i treba ih uskladiti sa stvarnim pravnim licem prije naplate klijentima.
+## Dogovorene postavke
+- glavni jezik: Crnogorski
+- Starter: 49 € mjesečno
+- Business: 79 € mjesečno
+- Professional: 199 € mjesečno
+- Enterprise: cijena po dogovoru
+- kontakt: info@balkanagent.com
