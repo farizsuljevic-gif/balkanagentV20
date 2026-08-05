@@ -1,16 +1,18 @@
-BALKAN AGENT — OBJAVA
+BALKAN AGENT — OBJAVA NA GITHUB / CLOUDFLARE
 
 1. Raspakujte ZIP.
-2. Na GitHub postavite svih 5 fajlova u glavni direktorijum repozitorijuma.
-3. Cloudflare Pages: Framework preset = None; Build command prazno; Build output directory = /
-4. Otvorite sajt i pošaljite prvi testni upit.
-5. Potvrdite aktivacioni e-mail koji FormSubmit pošalje na info@balkanagent.com.
+2. Označite SVE fajlove odjednom i ubacite ih u glavni nivo GitHub repozitorijuma.
+3. Moraju ostati zajedno:
+   index.html
+   admin.html
+   privacy.html
+   terms.html
+   balkan-agent-map.png
+   balkan-agent-demo.mp4
+4. Nakon objave otvorite kontakt formu i pošaljite test.
+5. FormSubmit će možda poslati jednokratnu potvrdu na info@balkanagent.com — potvrdite je.
 
 ADMIN TEST
-URL: /admin.html
 E-mail: ceo@balkanagent.com
 Šifra: BA-TEST-2026
-Napomena: admin panel je lokalni test i nije centralna baza podataka.
-
-PAKETI
-Starter 49 €, Business 79 €, Professional 199 €, Enterprise po dogovoru.
+Napomena: admin test čuva i prikazuje samo upite iz istog preglednika. Za pravi zajednički admin panel potrebni su backend i baza podataka.
