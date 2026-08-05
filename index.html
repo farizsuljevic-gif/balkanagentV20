@@ -1,149 +1,251 @@
 <!doctype html>
-<html lang="me">
+<html lang="bs">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="BalkanAgent builds AI employees for businesses across the Balkans.">
-  <title>BalkanAgent — AI Automation for the Balkans</title>
-  <link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="i18n.js"></script><script src="app.js"></script></head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Balkan Agent pomaže firmama da automatizuju prodaju, podršku i zakazivanje pomoću AI agenata koji rade 24/7." />
+  <meta name="theme-color" content="#071019" />
+  <title>Balkan Agent — AI zaposleni za vaš biznis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-<header class="site-header">
-  <a class="wordmark" href="#home" aria-label="BalkanAgent home">
-    <span>BALKAN</span><strong>AGENT</strong>
-    <small>AI AUTOMATION FOR THE BALKANS</small>
-  </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-  <nav class="main-nav" id="mainNav">
-    <a href="#home" data-i18n="home">Početna</a>
-    <a href="#solutions" data-i18n="solutions">Rješenja</a>
-    <a href="#how" data-i18n="how">Kako radi</a>
-    <a href="#demo" data-i18n="demo">Demo</a>
-    <a href="#pricing" data-i18n="pricing">Cijene</a>
-    <a href="#contact" data-i18n="contact">Kontakt</a>
-  </nav>
-  <div class="header-actions"><select class="language-select" data-lang><option value="me">🇲🇪 Crnogorski</option><option value="en">🇬🇧 English</option><option value="de">🇩🇪 Deutsch</option><option value="ru">🇷🇺 Русский</option></select><a class="login-link" href="login.html" data-i18n="login">Prijava</a><a class="button primary" href="register.html" data-i18n="start">Započni besplatno</a></div>
-</header>
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
 
-<main>
-<section class="hero section-shell" id="home">
-  <div class="hero-copy">
-    <div class="badge">★ AI AUTOMATION PLATFORM FOR THE BALKANS</div>
-    <h1><span data-i18n="hero">AI zaposleni za vaš biznis, dostupni 24/7.</span></h1>
-    <p><span data-i18n="lead">Automatizujte razgovore, rezervacije i prikupljanje leadova kroz moderan AI interfejs.</span></p>
-    <div class="hero-actions">
-      <a class="button primary" href="register.html"><span data-i18n="start">Započni besplatno</span></a>
-      <button class="button secondary" id="openDemo">▶ <span data-i18n="watch">Pogledaj demo</span></button>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Balkan Agent početna">
+        <span class="brand-mark" aria-hidden="true"><span>B</span><span>A</span></span>
+        <span class="brand-name">BALKAN <strong>AGENT</strong></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Meni</button>
+      <nav class="main-nav" id="main-nav" aria-label="Glavna navigacija">
+        <a href="#rjesenja">Rješenja</a>
+        <a href="#kako-radi">Kako radi</a>
+        <a href="#industrije">Industrije</a>
+        <a href="#cijene">Cijene</a>
+        <a href="#faq">Pitanja</a>
+      </nav>
+      <a class="button button-small button-outline desktop-cta" href="#kontakt">Zakažite razgovor</a>
     </div>
-    <div class="trust-row">
-      <span>✓ 14-day test access</span>
-      <span>✓ No card required</span>
-      <span>✓ Built for Balkan markets</span>
+  </header>
+
+  <main id="main">
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">AI automatizacija za firme na Balkanu</p>
+          <h1>Vi vodite biznis.<br /><span>AI preuzima rutinu.</span></h1>
+          <p class="hero-lead">Balkan Agent gradi AI agente koji odgovaraju klijentima, kvalifikuju upite, zakazuju termine i pomažu prodaji — na kanalima koje već koristite.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#kontakt">Zatražite besplatnu procjenu</a>
+            <button class="button button-ghost" type="button" data-open-chat>Isprobajte AI demo</button>
+          </div>
+          <ul class="trust-list" aria-label="Ključne prednosti">
+            <li>Postavljanje prema vašem procesu</li>
+            <li>Podrška na jezicima regiona</li>
+            <li>Bez dugoročnog ugovora</li>
+          </ul>
+        </div>
+
+        <div class="product-stage" aria-label="Primjer Balkan Agent radnog prostora">
+          <div class="stage-topline">
+            <span class="status-dot"></span>
+            <span>AI recepcioner je aktivan</span>
+            <span class="stage-time">24/7</span>
+          </div>
+          <div class="stage-body">
+            <aside class="mini-sidebar" aria-hidden="true">
+              <div class="mini-logo">BA</div>
+              <span class="active"></span><span></span><span></span><span></span><span></span>
+            </aside>
+            <div class="stage-content">
+              <div class="stage-heading">
+                <div><small>Današnji pregled</small><strong>Razgovori sa klijentima</strong></div>
+                <span class="live-pill">UŽIVO</span>
+              </div>
+              <div class="metric-row">
+                <article><small>Novi upiti</small><strong>18</strong><span>+6 danas</span></article>
+                <article><small>Zakazani termini</small><strong>7</strong><span>38% konverzija</span></article>
+                <article><small>Za odgovor</small><strong>0</strong><span>Sve obrađeno</span></article>
+              </div>
+              <div class="conversation-card">
+                <div class="conversation-head"><span>Posljednji razgovor</span><span>prije 1 min</span></div>
+                <div class="message incoming">Dobar dan, imate li slobodan termin u petak poslije 16h?</div>
+                <div class="message outgoing">Imamo termin u 17:30. Da li želite da ga rezervišem na vaše ime?</div>
+                <div class="booking-line"><span>✓</span> Termin spreman za potvrdu</div>
+              </div>
+              <div class="channel-row" aria-label="Podržani kanali">
+                <span>WhatsApp</span><span>Instagram</span><span>Web chat</span><span>E-mail</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Način rada">
+      <div class="container proof-grid">
+        <div><span>01</span><p>Razumijemo vaš proces</p></div>
+        <div><span>02</span><p>Gradimo i povezujemo agenta</p></div>
+        <div><span>03</span><p>Testiramo na stvarnim scenarijima</p></div>
+        <div><span>04</span><p>Pratimo i unapređujemo rezultate</p></div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="rjesenja">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Šta Balkan Agent radi</p>
+          <h2>Manje ručnog rada. Više vremena za klijente.</h2>
+          <p>Ne prodajemo generičan chatbot. Svako rješenje prilagođavamo vašim uslugama, pravilima, tonu komunikacije i poslovnim ciljevima.</p>
+        </div>
+        <div class="solution-grid">
+          <article class="solution-card featured">
+            <span class="card-number">01</span>
+            <h3>AI recepcioner</h3>
+            <p>Odgovara na česta pitanja, prikuplja podatke i zakazuje termine bez čekanja.</p>
+            <ul><li>Web chat i poruke</li><li>Kalendar i rezervacije</li><li>Preusmjeravanje čovjeku</li></ul>
+          </article>
+          <article class="solution-card">
+            <span class="card-number">02</span>
+            <h3>AI prodajni asistent</h3>
+            <p>Kvalifikuje potencijalne kupce i vodi ih do sljedećeg koraka u prodaji.</p>
+            <ul><li>Prikupljanje upita</li><li>Automatski follow-up</li><li>CRM evidencija</li></ul>
+          </article>
+          <article class="solution-card">
+            <span class="card-number">03</span>
+            <h3>AI korisnička podrška</h3>
+            <p>Rješava rutinske zahtjeve i predaje složene slučajeve vašem timu sa cijelim kontekstom.</p>
+            <ul><li>Baza znanja firme</li><li>Više jezika</li><li>Izvještaji o problemima</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad process-section" id="kako-radi">
+      <div class="container process-grid">
+        <div class="process-copy">
+          <p class="eyebrow">Kako počinjemo</p>
+          <h2>Prvo rješavamo jedan stvaran problem.</h2>
+          <p>Ne pokušavamo automatizovati cijelu firmu odjednom. Biramo proces koji vam oduzima vrijeme ili gubi klijente, gradimo prvu verziju i mjerimo rezultat.</p>
+          <a class="text-link" href="#kontakt">Pošaljite nam svoj proces <span>→</span></a>
+        </div>
+        <ol class="process-list">
+          <li><span>1</span><div><h3>Besplatna analiza</h3><p>U kratkom razgovoru prolazimo kroz upite, kanale i način rada vašeg tima.</p></div></li>
+          <li><span>2</span><div><h3>Prototip i test</h3><p>Pravimo probnu verziju sa vašim sadržajem i testiramo najvažnije scenarije.</p></div></li>
+          <li><span>3</span><div><h3>Povezivanje</h3><p>Agent povezujemo sa sajtom, kalendarom, e-mailom ili drugim dostupnim alatima.</p></div></li>
+          <li><span>4</span><div><h3>Praćenje i optimizacija</h3><p>Pratimo razgovore, greške i konverzije i redovno poboljšavamo sistem.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section-pad" id="industrije">
+      <div class="container">
+        <div class="section-head horizontal">
+          <div><p class="eyebrow">Rješenja po djelatnosti</p><h2>Počinjemo tamo gdje je vrijednost jasna.</h2></div>
+          <p>Prve implementacije fokusiramo na firme koje svakodnevno primaju veliki broj sličnih upita i rezervacija.</p>
+        </div>
+        <div class="industry-grid">
+          <article><span>HOTELI I APARTMANI</span><h3>Upiti gostiju i rezervacije</h3><p>Dostupnost, pravila objekta, check-in informacije i direktni upiti.</p></article>
+          <article><span>SALONI I ORDINACIJE</span><h3>Zakazivanje bez telefonskog čekanja</h3><p>Termini, usluge, podsjetnici i osnovna priprema klijenta.</p></article>
+          <article><span>NEKRETNINE</span><h3>Kvalifikacija kupaca i zakupaca</h3><p>Budžet, lokacija, tip nekretnine i automatsko zakazivanje obilaska.</p></article>
+          <article><span>AUTO-SERVISI I SALONI</span><h3>Prijem upita i prodajnih leadova</h3><p>Vrsta usluge, model vozila, željeni termin ili interesovanje za kupovinu.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad pricing-section" id="cijene">
+      <div class="container pricing-grid">
+        <div class="pricing-intro">
+          <p class="eyebrow">Jednostavan početak</p>
+          <h2>Prva automatizacija bez velikog rizika.</h2>
+          <p>Tačna cijena zavisi od kanala, integracija i obima rada. Nakon besplatne analize dobijaš jasnu ponudu prije nego što bilo šta počnemo.</p>
+        </div>
+        <article class="price-card">
+          <div class="price-top"><span>START</span><span>Za jedan proces</span></div>
+          <div class="price"><strong>od 79 €</strong><span>/ mjesečno</span></div>
+          <p>Za firmu kojoj treba jedan AI agent na sajtu ili jednom komunikacionom kanalu.</p>
+          <ul><li>Jedan prilagođeni AI agent</li><li>Osnovna baza znanja</li><li>Prikupljanje leadova</li><li>Mjesečno unapređenje</li></ul>
+          <a class="button button-primary full" href="#kontakt">Provjerite da li vam odgovara</a>
+          <small>Implementacija i dodatne integracije se procjenjuju posebno.</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-pad faq-section" id="faq">
+      <div class="container faq-grid">
+        <div><p class="eyebrow">Česta pitanja</p><h2>Bez velikih obećanja. Jasni odgovori.</h2></div>
+        <div class="accordion">
+          <details><summary>Da li AI može potpuno zamijeniti zaposlenog?</summary><p>Ne u svakom procesu. Najbolje rezultate daje kada preuzme ponavljajuće upite i zadatke, a složene ili osjetljive situacije preda čovjeku.</p></details>
+          <details><summary>Na kojim jezicima može komunicirati?</summary><p>Može komunicirati na jezicima regiona, kao i na engleskom i njemačkom. Kvalitet zavisi od sadržaja i scenarija koje pripremimo za vašu firmu.</p></details>
+          <details><summary>Može li se povezati sa WhatsAppom i Instagramom?</summary><p>Da, kada vaš poslovni nalog i izabrani kanal podržavaju zvaničnu integraciju. Tokom analize provjeravamo tehničke uslove prije ponude.</p></details>
+          <details><summary>Šta se dešava kada AI ne zna odgovor?</summary><p>Postavljamo pravila za siguran odgovor, prikupljanje kontakta ili predaju razgovora vašem zaposlenom. Agent ne treba da izmišlja informacije.</p></details>
+          <details><summary>Koliko traje postavljanje?</summary><p>Jednostavan web agent može biti spreman brzo, dok integracije i složeniji procesi zahtijevaju više testiranja. Rok navodimo u ponudi nakon analize.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad contact-section" id="kontakt">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Prvi korak</p>
+          <h2>Pokažite nam gdje vaša firma gubi vrijeme.</h2>
+          <p>Opišite ukratko šta želite automatizovati. Dobićete realnu procjenu šta se može uraditi, koji su potrebni alati i koliko bi koštalo.</p>
+          <div class="contact-note"><span>✓</span><p>Bez obaveze i bez prodajnog pritiska. Ako AI nije dobro rješenje za vaš slučaj, reći ćemo otvoreno.</p></div>
+        </div>
+        <form class="lead-form" id="lead-form" action="https://formsubmit.co/ajax/info@balkanagent.com" method="POST" novalidate>
+          <div class="form-row">
+            <label>Ime i prezime<input type="text" name="name" autocomplete="name" required maxlength="80" /></label>
+            <label>Firma<input type="text" name="company" autocomplete="organization" maxlength="100" /></label>
+          </div>
+          <div class="form-row">
+            <label>E-mail<input type="email" name="email" autocomplete="email" required maxlength="120" /></label>
+            <label>Telefon / WhatsApp<input type="tel" name="phone" autocomplete="tel" maxlength="40" /></label>
+          </div>
+          <label>Djelatnost
+            <select name="industry" required>
+              <option value="">Izaberite djelatnost</option>
+              <option>Hotel / apartmani</option><option>Restoran</option><option>Salon / ordinacija</option><option>Nekretnine</option><option>Auto-industrija</option><option>Online prodaja</option><option>Drugo</option>
+            </select>
+          </label>
+          <label>Šta želite da automatizujete?<textarea name="message" rows="5" required maxlength="1200" placeholder="Na primjer: primamo mnogo istih upita na Instagramu i želimo automatsko zakazivanje termina..."></textarea></label>
+          <label class="consent"><input type="checkbox" name="consent" required /><span>Saglasan/na sam da Balkan Agent koristi ove podatke kako bi odgovorio na moj upit. Pročitajte <a href="privacy.html">politiku privatnosti</a>.</span></label>
+          <input type="hidden" name="_subject" value="Novi upit — Balkan Agent" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="button button-primary full" type="submit">Pošaljite upit</button>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div><a class="brand" href="#top"><span class="brand-mark"><span>B</span><span>A</span></span><span class="brand-name">BALKAN <strong>AGENT</strong></span></a><p>Praktična AI automatizacija za firme na Balkanu.</p></div>
+      <div><strong>Kontakt</strong><a href="mailto:info@balkanagent.com">info@balkanagent.com</a><a href="#kontakt">Zakažite razgovor</a></div>
+      <div><strong>Informacije</strong><a href="privacy.html">Privatnost</a><a href="terms.html">Uslovi korišćenja</a></div>
     </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Balkan Agent</span><span>AI pomaže. Ljudi odlučuju.</span></div>
+  </footer>
+
+  <button class="chat-launcher" type="button" data-open-chat aria-label="Otvori AI demo chat"><span>AI</span><strong>Isprobajte demo</strong></button>
+  <div class="chat-shell" id="chat-shell" hidden>
+    <section class="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+      <header><div><span class="status-dot"></span><div><strong id="chat-title">Balkan Agent demo</strong><small>AI asistent</small></div></div><button type="button" data-close-chat aria-label="Zatvori">×</button></header>
+      <div class="chat-messages" id="chat-messages" aria-live="polite">
+        <div class="chat-message bot">Zdravo! Ja sam demo AI asistent. Mogu da objasnim kako Balkan Agent može pomoći vašoj firmi ili da prikupim podatke za besplatnu procjenu.</div>
+      </div>
+      <div class="chat-suggestions"><button type="button">Kako radi?</button><button type="button">Koliko košta?</button><button type="button">Želim procjenu</button></div>
+      <form id="chat-form"><label class="sr-only" for="chat-input">Poruka</label><input id="chat-input" name="message" placeholder="Napišite poruku..." autocomplete="off" maxlength="500" required /><button type="submit" aria-label="Pošalji">→</button></form>
+      <small class="chat-disclaimer">Demo može pogriješiti. Ne unosite osjetljive podatke.</small>
+    </section>
   </div>
 
-  <div class="network-card premium-card">
-    <img src="balkan-network.png" alt="Connected Balkan business network">
-    <div class="channel-stack">
-      <span>◎ Website</span><span>● WhatsApp</span><span>◉ Instagram</span><span>● Messenger</span><span>◆ Viber</span>
-    </div>
-    <div class="employee-card">
-      <strong>AI Employee</strong>
-      <small>Working for you 24/7</small>
-      <img src="ai-employee.png" alt="AI employee">
-      <em>● ACTIVE</em>
-    </div>
-  </div>
-
-  <div class="dashboard-card premium-card">
-    <div class="dashboard-top"><strong>Live Overview</strong><span>All Channels</span></div>
-    <img src="dashboard-preview.png" alt="BalkanAgent dashboard preview">
-    <div class="dashboard-note">One place for leads, bookings and conversations.</div>
-  </div>
-</section>
-
-<section class="metrics section-shell premium-card">
-  <div><strong>24/7</strong><span>AI availability</span></div>
-  <div><strong>11+</strong><span>Supported languages</span></div>
-  <div><strong>1 code</strong><span>Website installation</span></div>
-  <div><strong>Real leads</strong><span>Captured automatically</span></div>
-  <div><strong>Fast setup</strong><span>Built for testing</span></div>
-  <div><strong>One dashboard</strong><span>Everything together</span></div>
-</section>
-
-<section class="content-grid section-shell" id="solutions">
-  <article class="section-panel premium-card">
-    <p class="section-kicker">POWERFUL AI SOLUTIONS</p>
-    <div class="solution-grid">
-      <div class="mini-card"><i>💬</i><h3>Instant answers</h3><p>Reply to common customer questions without delays.</p></div>
-      <div class="mini-card"><i>📅</i><h3>Booking support</h3><p>Guide customers through appointments and reservations.</p></div>
-      <div class="mini-card"><i>🎯</i><h3>Lead capture</h3><p>Collect names, phone numbers, emails and requests.</p></div>
-      <div class="mini-card"><i>🌍</i><h3>Multilingual</h3><p>Serve customers across the Balkans and beyond.</p></div>
-    </div>
-  </article>
-
-  <article class="section-panel premium-card" id="how">
-    <p class="section-kicker">HOW BALKANAGENT WORKS</p>
-    <div class="steps">
-      <div><b>01</b><h3>Create an account</h3><p>Register your business securely.</p></div>
-      <div><b>02</b><h3>Configure your AI</h3><p>Add services, answers and contact information.</p></div>
-      <div><b>03</b><h3>Connect your website</h3><p>Install one lightweight script.</p></div>
-      <div><b>04</b><h3>Start capturing leads</h3><p>See requests inside your dashboard.</p></div>
-    </div>
-  </article>
-</section>
-
-<section class="video-section section-shell" id="demo">
-  <div class="video-copy">
-    <p class="section-kicker">SEE THE AI EMPLOYEE IN ACTION</p>
-    <h2>A short presentation that shows what your customers experience.</h2>
-    <p>Watch messages arrive, see the AI respond and follow how a new lead moves into the dashboard.</p>
-    <button class="button primary" id="openDemoTwo">Play Presentation →</button>
-  </div>
-  <button class="video-cover premium-card" id="openDemoThree" aria-label="Play BalkanAgent demo">
-    <img src="balkan-network.png" alt="Demo preview">
-    <span class="play">▶</span>
-    <strong>WATCH DEMO</strong>
-  </button>
-</section>
-
-<section class="pricing-section section-shell" id="pricing">
-  <p class="section-kicker">SIMPLE, TRANSPARENT PRICING</p>
-  <div class="pricing-grid">
-    <article class="price-card premium-card"><h3>Starter</h3><strong>€49<small>/month</small></strong><p>For small businesses testing automation.</p><ul><li>1 website AI employee</li><li>Lead capture</li><li>Basic dashboard</li><li>Email support</li></ul><a class="button outline" href="register.html">Start Trial</a></article>
-    <article class="price-card premium-card featured"><span class="popular">MOST POPULAR</span><h3>Business</h3><strong>€99<small>/month</small></strong><p>For growing businesses with more demand.</p><ul><li>3 AI employees</li><li>Advanced lead capture</li><li>Priority dashboard</li><li>Priority support</li></ul><a class="button primary" href="register.html">Start Trial</a></article>
-    <article class="price-card premium-card"><h3>Pro</h3><strong>€199<small>/month</small></strong><p>For established businesses and teams.</p><ul><li>10 AI employees</li><li>Custom branding</li><li>Advanced analytics</li><li>Onboarding support</li></ul><a class="button outline" href="register.html">Start Trial</a></article>
-    <article class="price-card premium-card"><h3>Enterprise</h3><strong>Custom</strong><p>For organizations with custom requirements.</p><ul><li>Custom limits</li><li>Custom integrations</li><li>Dedicated support</li><li>SLA options</li></ul><a class="button gold" href="#contact">Contact Sales</a></article>
-  </div>
-</section>
-
-<section class="cta-section section-shell premium-card" id="contact">
-  <div><p class="section-kicker">READY TO TEST BALKANAGENT?</p><h2>Give your business an AI employee.</h2><p>Start with a test account and see how the platform fits your business.</p></div>
-  <div class="cta-actions"><a class="button primary" href="register.html">Create Test Account →</a><a class="button secondary" href="mailto:info@balkanagent.com">info@balkanagent.com</a></div>
-</section>
-</main>
-
-<footer class="footer">
-  <div class="footer-wordmark"><span>BALKAN</span><strong>AGENT</strong><small>AI AUTOMATION FOR THE BALKANS</small></div>
-  <p>+382 68 400 509 · info@balkanagent.com · ceo@balkanagent.com</p>
-  <p>© 2026 BalkanAgent. All rights reserved.</p>
-</footer>
-
-<div class="modal" id="demoModal">
-  <div class="modal-box">
-    <button class="modal-close" id="closeDemo">×</button>
-    <video id="demoVideo" controls playsinline preload="metadata"><source src="balkanagent-demo.mp4" type="video/mp4"></video>
-  </div>
-</div>
-<script>
-const menuToggle=document.getElementById('menuToggle');
-const mainNav=document.getElementById('mainNav');
-menuToggle.onclick=()=>mainNav.classList.toggle('open');
-const modal=document.getElementById('demoModal');
-const video=document.getElementById('demoVideo');
-['openDemo','openDemoTwo','openDemoThree'].forEach(id=>document.getElementById(id).onclick=()=>{modal.classList.add('open');video.play().catch(()=>{})});
-document.getElementById('closeDemo').onclick=()=>{modal.classList.remove('open');video.pause()};
-modal.onclick=e=>{if(e.target===modal){modal.classList.remove('open');video.pause()}};
-</script>
+  <script src="app.js" defer></script>
 </body>
 </html>
