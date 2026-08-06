@@ -1,18 +1,14 @@
-BALKAN AGENT — OBJAVA
+BALKAN AGENT — verzija sa popravljenim admin panelom i slikovnim videom
 
+Postavljanje na GitHub:
 1. Raspakujte ZIP.
-2. Postavite sve fajlove direktno u glavni GitHub repozitorijum.
-3. Cloudflare Pages build command: prazno
-4. Output directory: /
-5. Glavna stranica: index.html
+2. Dodajte sve fajlove direktno u glavni dio repozitorijuma.
+3. Ne mijenjajte nazive fajlova.
 
-Kontakt forma:
-- šalje na info@balkanagent.com preko FormSubmit
-- prvo slanje može zahtijevati potvrdu e-maila
+Javni sajt: index.html
+Admin panel: admin.html
+Admin e-mail: ceo@balkanagent.com
+Test šifra: BA-TEST-2026
+Kontakt: info@balkanagent.com
 
-Admin test:
-- stranica: admin.html
-- e-mail: ceo@balkanagent.com
-- šifra: BA-TEST-2026
-- prikazuje samo testne upite iz istog preglednika (localStorage)
-- za centralni admin na svim uređajima potreban je backend i baza
+Napomena: admin panel je testni i koristi lokalnu memoriju preglednika. Kliknite „Dodaj probni upit“ da provjerite da panel radi. Upiti sa kontakt forme prikazuju se u adminu samo na istom domenu i u istom pregledniku. Za zajednički panel na svim uređajima potrebni su backend i baza podataka.
