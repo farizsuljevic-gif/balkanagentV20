@@ -1,14 +1,18 @@
-BALKAN AGENT — verzija sa popravljenim admin panelom i slikovnim videom
+BALKAN AGENT — BLUE & GOLD RELEASE
 
-Postavljanje na GitHub:
-1. Raspakujte ZIP.
-2. Dodajte sve fajlove direktno u glavni dio repozitorijuma.
-3. Ne mijenjajte nazive fajlova.
+Upload every file from this ZIP to the root of the GitHub repository.
+Do not upload the ZIP itself.
 
-Javni sajt: index.html
-Admin panel: admin.html
-Admin e-mail: ceo@balkanagent.com
-Test šifra: BA-TEST-2026
-Kontakt: info@balkanagent.com
+Main page: index.html
+Admin test: admin.html
+Admin email: ceo@balkanagent.com
+Admin test password: BA-TEST-2026
+Public contact: info@balkanagent.com
 
-Napomena: admin panel je testni i koristi lokalnu memoriju preglednika. Kliknite „Dodaj probni upit“ da provjerite da panel radi. Upiti sa kontakt forme prikazuju se u adminu samo na istom domenu i u istom pregledniku. Za zajednički panel na svim uređajima potrebni su backend i baza podataka.
+New video: balkan-agent-english-presentation.mp4
+Video language: English
+Duration: 63 seconds
+The video does not contain the Balkan map.
+
+The contact form uses FormSubmit. The first live submission may require confirmation through the email sent to info@balkanagent.com.
+The admin panel is a browser-based test panel; it is not a shared production database.
